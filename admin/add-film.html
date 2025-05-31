@@ -4,50 +4,46 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tambah Film - Admin</title>
+    <title>Tambah Film - Failytail Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-50 min-h-screen p-6 font-sans">
+<body class="min-h-screen bg-cover bg-center bg-no-repeat font-sans" style="background-image: url('fotobg.png');">
+    <div class="bg-white bg-opacity-90 min-h-screen p-6 max-w-xl mx-auto rounded-lg shadow-lg">
+        <header class="mb-6">
+            <h1 class="text-2xl font-extrabold text-cyan-700 drop-shadow-md">Tambah Film Baru</h1>
+            <p class="text-gray-600 mt-1 text-sm">Isi detail film dan upload poster</p>
+        </header>
 
-    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow">
-        <h1 class="text-2xl font-bold mb-4 text-gray-700">Tambah Film Baru</h1>
-
-        <form action="#" method="POST" enctype="multipart/form-data" class="space-y-4">
-
-            <!-- Judul -->
+        <form action="proses-tambah-film.php" method="POST" enctype="multipart/form-data" class="space-y-4 text-sm">
             <div>
-                <label class="block font-medium text-gray-700">Judul Film</label>
-                <input type="text" name="judul" required class="w-full mt-1 p-2 border border-gray-300 rounded" />
+                <label for="judul" class="block font-semibold text-gray-700 mb-1">Judul Film</label>
+                <input type="text" id="judul" name="judul" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm" />
             </div>
 
-            <!-- Deskripsi -->
             <div>
-                <label class="block font-medium text-gray-700">Deskripsi</label>
-                <textarea name="deskripsi" rows="4" required class="w-full mt-1 p-2 border border-gray-300 rounded resize-none"></textarea>
+                <label for="genre" class="block font-semibold text-gray-700 mb-1">Genre</label>
+                <input type="text" id="genre" name="genre" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm" />
             </div>
 
-            <!-- Genre -->
             <div>
-                <label class="block font-medium text-gray-700">Genre (Opsional)</label>
-                <input type="text" name="genre" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Contoh: Drama, Action, Komedi" />
+                <label for="deskripsi" class="block font-semibold text-gray-700 mb-1">Deskripsi</label>
+                <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-md resize-y focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm"></textarea>
             </div>
 
-            <!-- Poster -->
             <div>
-                <label class="block font-medium text-gray-700">Poster Film</label>
-                <input type="file" name="poster" accept="image/*" required class="w-full mt-1 p-2 border border-gray-300 rounded bg-white" />
+                <label for="poster" class="block font-semibold text-gray-700 mb-1">Upload Poster Film</label>
+                <input type="file" id="poster" name="poster" accept="image/*" required class="w-full file:border-0 file:bg-cyan-600 file:text-white file:px-3 file:py-1.5 file:rounded-md file:cursor-pointer hover:file:bg-cyan-700" />
             </div>
 
-            <!-- Tombol -->
-            <div class="flex justify-between mt-6">
-                <a href="dashboard.html" class="text-cyan-600 hover:underline">← Kembali ke Dashboard</a>
-                <button type="submit" class="bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">Simpan Film</button>
+            <div class="flex justify-between items-center">
+                <a href="dashboard.html" class="text-gray-600 hover:underline text-sm">&larr; Kembali ke Dashboard</a>
+                <button type="submit" class="bg-cyan-600 text-white font-semibold px-5 py-2 rounded-md shadow-md hover:bg-cyan-700 transition text-sm">
+          Simpan Film
+        </button>
             </div>
-
         </form>
     </div>
-
 </body>
 
 </html>
