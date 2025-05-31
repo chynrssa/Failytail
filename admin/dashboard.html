@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Admin - Failytail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 min-h-screen p-6 font-sans">
+
+    <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-4 text-gray-700">Dashboard Admin</h1>
+
+        <div class="flex justify-end mb-4">
+            <a href="add-film.html" class="bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">
+        + Tambah Film
+      </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-200 text-sm">
+                <thead>
+                    <tr class="bg-gray-100 text-left">
+                        <th class="p-3 border">No</th>
+                        <th class="p-3 border">Poster</th>
+                        <th class="p-3 border">Judul</th>
+                        <th class="p-3 border">Genre</th>
+                        <th class="p-3 border">Deskripsi</th>
+                        <th class="p-3 border">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-3 border">1</td>
+                        <td class="p-3 border">
+                            <img src="/assets/posters/film1.jpg" alt="Poster Film 1" class="h-16 rounded shadow" />
+                        </td>
+                        <td class="p-3 border">nenek gayunggg</td>
+                        <td class="p-3 border">Horror dikit</td>
+                        <td class="p-3 border">ini film yang serem bgt jirrrr</td>
+                        <td class="p-3 border space-x-2">
+                            <a href="edit-film.html?id=1" class="text-blue-600 hover:underline">Edit</a>
+                            <button onclick="konfirmasiHapus(1)" class="text-red-600 hover:underline">Hapus</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function konfirmasiHapus(id) {
+            const yakin = confirm("Apakah Anda yakin ingin menghapus film ini?");
+            if (yakin) {
+                window.location.href = `hapus-film.php?id=${id}`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tambah Film - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 min-h-screen p-6 font-sans">
+
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-4 text-gray-700">Tambah Film Baru</h1>
+
+        <form action="#" method="POST" enctype="multipart/form-data" class="space-y-4">
+
+            <!-- Judul -->
+            <div>
+                <label class="block font-medium text-gray-700">Judul Film</label>
+                <input type="text" name="judul" required class="w-full mt-1 p-2 border border-gray-300 rounded" />
+            </div>
+
+            <!-- Deskripsi -->
+            <div>
+                <label class="block font-medium text-gray-700">Deskripsi</label>
+                <textarea name="deskripsi" rows="4" required class="w-full mt-1 p-2 border border-gray-300 rounded resize-none"></textarea>
+            </div>
+
+            <!-- Genre -->
+            <div>
+                <label class="block font-medium text-gray-700">Genre (Opsional)</label>
+                <input type="text" name="genre" class="w-full mt-1 p-2 border border-gray-300 rounded" placeholder="Contoh: Drama, Action, Komedi" />
+            </div>
+
+            <!-- Poster -->
+            <div>
+                <label class="block font-medium text-gray-700">Poster Film</label>
+                <input type="file" name="poster" accept="image/*" required class="w-full mt-1 p-2 border border-gray-300 rounded bg-white" />
+            </div>
+
+            <!-- Tombol -->
+            <div class="flex justify-between mt-6">
+                <a href="dashboard.html" class="text-cyan-600 hover:underline">← Kembali ke Dashboard</a>
+                <button type="submit" class="bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">Simpan Film</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
