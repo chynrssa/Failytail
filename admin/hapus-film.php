@@ -19,7 +19,7 @@ $sqlGetPoster = "SELECT poster FROM films WHERE id='$id'";
 $result = $conn->query($sqlGetPoster);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $posterFile = "../assets/posters/" . $row['poster'];
+    $posterFile = "../image/posters/" . $row['poster'];
     
     // Hapus file poster dari folder jika ada
     if (file_exists($posterFile)) {
