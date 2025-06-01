@@ -86,6 +86,7 @@
       color: #ffffff;
       font-family: 'Pixelify Sans', sans-serif;
     }
+
     .search-bar {
       flex: 1;
       display: flex;
@@ -114,7 +115,7 @@
       font-size: 30px;
     }
 
-      .login-button {
+    .login-button {
       background-color: #00bfe7;
       color: white;
       border: none;
@@ -329,7 +330,8 @@
         <input type="text" maxlength="1">
       </div>
 
-       <a href="daftar3.html" class="btn-lanjut">verify code</a>
+      <!-- Tombol verifikasi yang aktifkan JavaScript -->
+      <button class="btn-lanjut" onclick="verifikasiKode()">verify code</button>
 
       <p>Belum menerima email? <a href="#">Kirim ulang sms</a></p>
     </div>
@@ -357,5 +359,21 @@
       </div>
     </div>
   </footer>
+
+  <!-- Script Verifikasi -->
+  <script>
+    function verifikasiKode() {
+      const inputs = document.querySelectorAll('.code-inputs input');
+      let code = '';
+      inputs.forEach(input => code += input.value);
+
+      if (code.length === 5) {
+        alert("✅ Verifikasi berhasil!");
+        window.location.href = "daftar3.html";
+      } else {
+        alert("⚠️ Harap isi semua kolom kode terlebih dahulu.");
+      }
+    }
+  </script>
 </body>
 </html>

@@ -8,13 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen flex flex-col justify-between font-sans bg-cover bg-center text-sm md:text-base lg:text-lg" style="background-image: url('fotobg.png');">
+<body class="min-h-screen flex flex-col justify-between font-sans bg-cover bg-center text-sm md:text-base lg:text-lg" style="background-image: url('../image/bg_failytail.png');">
 
     <!-- Header -->
     <header class="bg-cyan-500 bg-opacity-90 text-white py-4 px-6 flex justify-between items-center shadow-md">
         <div class="flex items-center space-x-4">
             <div class="text-xl md:text-2xl font-bold flex items-center">
-                <img src="/image/logo_ failytail.png" class="h-6 mr-2" /> Failytail Admin
+                <img src="../image/logo_ failytail.png" class="h-6 mr-2" /> Failytail Admin
             </div>
         </div>
         <div>
@@ -71,8 +71,7 @@
     <!-- Redirect script -->
     <script>
         function redirectToDashboard(event) {
-            event.preventDefault(); // Mencegah form submit
-            // Di sini kita bisa nambahin validasi kalau mau ajaaa yee (opsional)
+            event.preventDefault(); 
             window.location.href = "dashboard.html";
         }
     </script>
