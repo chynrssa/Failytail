@@ -235,7 +235,11 @@
         <span class="web-name">failytail</span>
       </div>
 
-      <div><img src="../../image/kategori.png" alt="Kategori" /></div>
+      <div>
+      <a href="../../index.html">
+        <img src="../../image/kategori.png" alt="Kategori" />
+      </a>
+    </div>
 
       <div class="search-bar">
         <input type="text" placeholder="Cari, ulas, dan beri rating film yang kamu tonton!" />
@@ -244,43 +248,42 @@
 
       <div><img src="../../image/komen.png" alt="Chat" /></div>
       <div><img src="../../image/Film.png" alt="Film" /></div>
-
-      <button class="login-button">Masuk</button>
+      
     </div>
   </header>
 
-  <main>
-    <div class="form-biodata">
+ <main>
+    <form class="form-biodata" id="biodataForm">
       <div style="flex: 1 1 55%;">
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-          <input type="text" placeholder="Nama Depan" required>
-          <input type="text" placeholder="Nama Belakang" required>
+          <input type="text" name="nama_depan" placeholder="Nama Depan" required>
+          <input type="text" name="nama_belakang" placeholder="Nama Belakang" required>
         </div>
-        <input type="text" placeholder="Alamat" style="margin-top: 10px;" required>
-        <input type="text" placeholder="No. Handphone" style="margin-top: 10px;" required>
+        <input type="text" name="alamat" placeholder="Alamat" style="margin-top: 10px;" required>
+        <input type="text" name="hp" placeholder="No. Handphone" style="margin-top: 10px;" required>
         <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <input type="text" placeholder="Kota" required>
-          <input type="text" placeholder="Domisili" required>
-        </div>
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <input type="text" placeholder="Tempat Lahir" required>
-          <input type="date" required>
+          <input type="text" name="kota" placeholder="Kota" required>
+          <input type="text" name="domisili" placeholder="Domisili" required>
         </div>
         <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <input type="file" accept="image/*" onchange="previewImage(event)">
-          <select required>
+          <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" required>
+          <input type="date" name="tanggal_lahir" required>
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <input type="file" name="foto" accept="image/*" onchange="previewImage(event)" required>
+          <select name="jenis_kelamin" required>
             <option value="">Pilih Jenis Kelamin</option>
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
           </select>
         </div>
-        <button style="margin-top: 20px;">Lanjut</button>
+        <button type="submit" style="margin-top: 20px;">Lanjut</button>
       </div>
       <div style="flex: 1 1 40%; display: flex; flex-direction: column; align-items: center;">
         <h3 style="margin-bottom: 10px;">Pratinjau Gambar</h3>
         <img id="preview" src="https://randomuser.me/api/portraits/women/44.jpg" class="preview-img">
       </div>
-    </div>
+    </form>
   </main>
 
   <footer>
@@ -309,11 +312,20 @@
   <script>
     function previewImage(event) {
       const reader = new FileReader();
-      reader.onload = function() {
+      reader.onload = function () {
         document.getElementById('preview').src = reader.result;
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+
+    document.getElementById('biodataForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // mencegah form langsung submit
+      if (this.checkValidity()) {
+        window.location.href = "daftar4.html"; // redirect jika semua input valid
+      } else {
+        this.reportValidity(); // menampilkan pesan error
+      }
+    });
   </script>
 </body>
 </html>
