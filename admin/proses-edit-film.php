@@ -21,12 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sqlGetPoster);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $oldPosterFile = "../assets/posters/" . $row['poster'];
+        $oldPosterFile = "../image/posters/" . $row['poster'];
     }
 
     // Proses upload poster baru jika ada
     if (!empty($poster["name"])) {
-        $targetDir = "../assets/posters/";
+        $targetDir = "../image/posters/";
         $newPosterName = time() . "_" . basename($poster["name"]);
         $targetFile = $targetDir . $newPosterName;
 
