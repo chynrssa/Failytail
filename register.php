@@ -1,11 +1,11 @@
 <?php
 session_start();
-require 'koneksi/koneksi.php'; // Pastikan koneksi database
+require 'koneksi/koneksi.php'; // Pastikan koneksi ke database
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $role = $_POST['role']; // Ambil peran dari formulir
+    $role = 'user'; // Default: Semua pendaftar adalah User
 
     $conn = new mysqli($host, $user, $pass, $dbname);
     if ($conn->connect_error) {
@@ -19,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $error = "Username sudah digunakan!";
     } else {
-        // Simpan ke database
+        // Simpan ke database dengan role default 'user'
         $sql = "INSERT INTO users (username, password, role) VALUES ('$username', MD5('$password'), '$role')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: login.php");
+            header("Location: login.php"); // Redirect ke halaman login
             exit();
         } else {
             $error = "Registrasi gagal, silakan coba lagi!";
