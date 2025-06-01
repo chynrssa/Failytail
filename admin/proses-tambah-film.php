@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Proses upload poster
-    $targetDir = "../assets/posters/";
+    $targetDir = "../image/posters/";
     $posterName = time() . "_" . basename($poster["name"]);
     $targetFile = $targetDir . $posterName;
 
