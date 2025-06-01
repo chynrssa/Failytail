@@ -5,23 +5,26 @@ require '../koneksi/koneksi.php'; // Pastikan koneksi ke database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $judul = $_POST['judul'];
     $genre = $_POST['genre'];
-    $deskripsi = $_POST['deskripsi'];
+    $tahun_rilis = $_POST['tahun_rilis']; // Tambahan sesuai SQL
+    $rating = $_POST['rating']; // Tambahan sesuai SQL
+    $komentar = $_POST['komentar']; // Tambahan sesuai SQL
     $poster = $_FILES['poster'];
 
-    // Folder untuk menyimpan poster
+    $conn = new mysqli($host, $user, $pass, $dbname);
+    if ($conn->connect_error) {
+        die("Koneksi gagal: " . $conn->connect_error);
+    }
+
+    // Proses upload poster
     $targetDir = "../assets/posters/";
     $posterName = time() . "_" . basename($poster["name"]);
     $targetFile = $targetDir . $posterName;
-    
-    // Validasi upload file
-    if (move_uploaded_file($poster["tmp_name"], $targetFile)) {
-        $conn = new mysqli($host, $user, $pass, $dbname);
-        if ($conn->connect_error) {
-            die("Koneksi gagal: " . $conn->connect_error);
-        }
 
-        // Simpan data ke database
-        $sql = "INSERT INTO films (judul, genre, deskripsi, poster) VALUES ('$judul', '$genre', '$deskripsi', '$posterName')";
+    if (move_uploaded_file($poster["tmp_name"], $targetFile)) {
+        // Simpan data ke database dengan format sesuai SQL
+        $sql = "INSERT INTO film (judul, genre, tahun_rilis, rating, komentar, poster) 
+                VALUES ('$judul', '$genre', '$tahun_rilis', '$rating', '$komentar', '$posterName')";
+
         if ($conn->query($sql) === TRUE) {
             $status = "Film berhasil ditambahkan!";
             $isSuccess = true;
@@ -56,15 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="mt-4">
-            <?php if ($isSuccess): ?>
-                <a href="dashboard.html" class="bg-[#00bfe7] hover:bg-[#00aac5] transition text-white font-semibold py-3 px-6 rounded shadow">
-                    Kembali ke Dashboard
-                </a>
-            <?php else: ?>
-                <a href="add-film.html" class="bg-red-600 hover:bg-red-700 transition text-white font-semibold py-3 px-6 rounded shadow">
-                    Coba Lagi
-                </a>
-            <?php endif; ?>
+            <a href="dashboard.html" class="bg-[#00bfe7] hover:bg-[#00aac5] transition text-white font-semibold py-3 px-6 rounded shadow">
+                Kembali ke Dashboard
+            </a>
         </div>
     </div>
 
