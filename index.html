@@ -14,16 +14,15 @@
     }
 
     body {
-    position: relative;
-    background-image: url('image/bg_failytail.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
+      position: relative;
+      background-image: url('image/bg_failytail.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
     body::before {
       content: "";
@@ -64,6 +63,7 @@
       justify-content: space-between;
       gap: 16px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -114,15 +114,28 @@
       font-size: 30px;
     }
 
-    .login-button {
+    .login-button,
+    .register-button {
       background-color: #00bfe7;
       color: white;
       border: none;
-      padding: 24px;
+      padding: 16px 20px;
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover,
+    .register-button:hover {
+      background-color: #008bb5;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
     }
 
     main {
@@ -275,6 +288,11 @@
       .video-item img {
         width: 100%;
       }
+
+      .header-actions {
+        flex-direction: column;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -293,8 +311,10 @@
       </div>
       <div><img src="image/komen.png" alt="Chat" /></div>
       <div><img src="image/Film.png" alt="Film" /></div>
-      <a href="user/daftar/daftar1.html" class="login-button">Masuk</a>
-
+      <div class="header-actions">
+        <a href="user/login/login.html" class="login-button">Login</a>
+        <a href="user/daftar/daftar1.html" class="register-button">Daftar</a>
+      </div>
     </div>
   </header>
 
