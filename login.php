@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $conn = new mysqli($host, $user, $pass, $dbname);
+    $conn = new mysqli($host, $user, $pass, $dbn);
     if ($conn->connect_error) {
         die("Koneksi gagal: " . $conn->connect_error);
     }
