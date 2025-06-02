@@ -144,13 +144,12 @@
       flex: 2;
     }
 
-   .main-poster img {
-  width: 400px;
-  height: 700px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
+    .main-poster img {
+      width: 400px;
+      height: 700px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
 
     .poster-details {
       margin-top: 12px;
@@ -227,17 +226,20 @@
       padding: 20px;
       font-size: 16px;
       color: #555;
+      text-align: center; /* agar teks footer rata tengah */
     }
 
     .footer-container {
       display: flex;
-      justify-content: space-between;
-      gap: 40px;
+      justify-content: center; /* agar konten footer di tengah */
+      gap: 0.1px;
       flex-wrap: wrap;
+      text-align: center; /* teks dalam div footer juga rata tengah */
     }
 
     footer div {
       min-width: 200px;
+      margin: 0 auto; /* agar kotak div footer rata tengah */
     }
 
     footer strong {
@@ -274,7 +276,7 @@
     <div class="top-header">Selamat Datang di Failytail</div>
     <div class="header-container">
       <div class="logo">
-        <img src="image/logo_ failytail.png" alt="Logo" />
+        <img src="image/logo_failytail.png" alt="Logo" />
         <span class="web-name">failytail</span>
       </div>
       <div class="search-bar">
@@ -289,32 +291,39 @@
   </header>
 
   <main class="main">
-    <div class="container">
-      <div class="main-poster">
-        <img id="mainPoster" src="image/posters/Inception.jpg" alt="Poster Utama">
-        <div class="poster-details">
-          <h2>See Pete Davidson in 'The Home'</h2>
-          <p>Warning: Not for the Squeamish!</p>
-          <span>Durasi: 1:58</span>
-        </div>
+    <div class="container" style="flex-direction: row; flex-wrap: wrap; justify-content: space-between; background-color: white;">
+      <div style="flex: 1; min-width: 180px; max-width: 200px; background-color: #f0faff; border-radius: 12px; padding: 16px; text-align: center;">
+        <img src="image/posters/Inception.jpg" alt="Inception" style="width: 100%; border-radius: 8px;">
+        <h3 style="color: #0077a3; margin-top: 10px;">Inception</h3>
+        <p style="font-size: 14px; color: #555;">Mimpi dalam mimpi dalam mimpi...</p>
       </div>
-      <div class="side-posters">
-        <div class="poster-item" onclick="loadPoster('https://m.media-amazon.com/images/M/MV5BOWEzODg5MzAt.jpg', 'Keanu Reeves Is Bringing You Good Fortune', 'Watch the teaser', '1:06')">
-          <img src="https://m.media-amazon.com/images/M/MV5BOWEzODg5MzAt.jpg" alt="thumb">
-          <div class="poster-info">
-            <h4>Keanu Reeves Is Bringing You Good Fortune</h4>
-            <p>Watch the teaser</p>
-            <span>1:06</span>
-          </div>
-        </div>
-        <div class="poster-item" onclick="loadPoster('https://m.media-amazon.com/images/M/MV5BNzI5MzI4ZDIt.jpg', 'Maia Kealoha Has the Best Interview Ever', 'Meet the Lilo & Stitch Star', '5:58')">
-          <img src="https://m.media-amazon.com/images/M/MV5BNzI5MzI4ZDIt.jpg" alt="thumb">
-          <div class="poster-info">
-            <h4>Maia Kealoha Has the Best Interview Ever</h4>
-            <p>Meet the Lilo & Stitch Star</p>
-            <span>5:58</span>
-          </div>
-        </div>
+
+      <div style="flex: 1; min-width: 180px; max-width: 200px; background-color: #f0faff; border-radius: 12px; padding: 16px; text-align: center;">
+        <img src="image/posters/Inception.jpg" alt="Inception" style="width: 100%; border-radius: 8px;">
+        <h4 style="color: #555;">Keanu</h4>
+        <h3 style="color: #0077a3;">Keanu Reeves</h3>
+        <p style="font-size: 14px; color: #555;">Bringing You Good Fortune</p>
+      </div>
+
+      <div style="flex: 1; min-width: 180px; max-width: 200px; background-color: #f0faff; border-radius: 12px; padding: 16px; text-align: center;">
+        <img src="image/posters/Inception.jpg" alt="Inception" style="width: 100%; border-radius: 8px;">
+        <h4 style="color: #555;">Maia</h4>
+        <h3 style="color: #0077a3;">Maia Kealoha</h3>
+        <p style="font-size: 14px; color: #555;">Best Interview Ever</p>
+      </div>
+
+      <div style="flex: 1; min-width: 180px; max-width: 200px; background-color: #f0faff; border-radius: 12px; padding: 16px; text-align: center;">
+        <img src="image/posters/Inception.jpg" alt="Inception" style="width: 100%; border-radius: 8px;">
+        <h4 style="color: #555;">Lilo</h4>
+        <h3 style="color: #0077a3;">Lilo & Stitch</h3>
+        <p style="font-size: 14px; color: #555;">Meet the Stars</p>
+      </div>
+
+      <div style="flex: 1; min-width: 180px; max-width: 200px; background-color: #f0faff; border-radius: 12px; padding: 16px; text-align: center;">
+        <img src="image/posters/Inception.jpg" alt="Inception" style="width: 100%; border-radius: 8px;">
+        <h4 style="color: #555;">Martian</h4>
+        <h3 style="color: #0077a3;">The Martian</h3>
+        <p style="font-size: 14px; color: #555;">Survival on Mars</p>
       </div>
     </div>
   </main>
