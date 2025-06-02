@@ -3,41 +3,50 @@ session_start();
 require '../koneksi/koneksi.php'; // Pastikan koneksi ke database
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST['id'];
     $judul = $_POST['judul'];
     $genre = $_POST['genre'];
-    $tahun_rilis = $_POST['tahun_rilis']; // Tambahan sesuai SQL
-    $rating = $_POST['rating']; // Tambahan sesuai SQL
-    $komentar = $_POST['komentar']; // Tambahan sesuai SQL
     $poster = $_FILES['poster'];
 
-    $conn = new mysqli($host, $user, $pass, $dbname);
+    $conn = new mysqli($host, $user, $pass, $db); // Pastikan koneksi benar
     if ($conn->connect_error) {
         die("Koneksi gagal: " . $conn->connect_error);
     }
 
-    // Proses upload poster
-    $targetDir = "../image/posters/";
-    $posterName = time() . "_" . basename($poster["name"]);
-    $targetFile = $targetDir . $posterName;
-
-    if (move_uploaded_file($poster["tmp_name"], $targetFile)) {
-        // Simpan data ke database dengan format sesuai SQL
-        $sql = "INSERT INTO film (judul, genre, tahun_rilis, rating, komentar, poster) 
-                VALUES ('$judul', '$genre', '$tahun_rilis', '$rating', '$komentar', '$posterName')";
-
-        if ($conn->query($sql) === TRUE) {
-            $status = "Film berhasil ditambahkan!";
-            $isSuccess = true;
-        } else {
-            $status = "Gagal menyimpan data, coba lagi!";
-            $isSuccess = false;
-        }
-
-        $conn->close();
-    } else {
-        $status = "Gagal mengupload poster!";
-        $isSuccess = false;
+    // Ambil poster lama untuk penghapusan jika ada file baru
+    $sqlGetPoster = "SELECT poster FROM film WHERE id='$id'";
+    $result = $conn->query($sqlGetPoster);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $oldPosterFile = "../image/posters/" . $row['poster'];
     }
+
+    // Proses upload poster baru jika ada
+    $updatePosterQuery = "";
+    if (!empty($poster["name"])) {
+        $targetDir = "../image/posters/";
+        $newPosterName = time() . "_" . basename($poster["name"]);
+        $targetFile = $targetDir . $newPosterName;
+
+        if (move_uploaded_file($poster["tmp_name"], $targetFile)) {
+            // Hapus poster lama jika file baru diunggah
+            if (file_exists($oldPosterFile)) {
+                unlink($oldPosterFile);
+            }
+            $updatePosterQuery = ", poster='$newPosterName'";
+        }
+    }
+
+    // Update data film dengan sintaks SQL yang benar
+    $sqlUpdateFilm = "UPDATE film SET judul='$judul', genre='$genre' $updatePosterQuery WHERE id='$id'";
+
+    if ($conn->query($sqlUpdateFilm) === TRUE) {
+        echo "<script>alert('Film berhasil diperbarui!'); window.location.href='dashboard.html';</script>";
+    } else {
+        echo "<script>alert('Gagal memperbarui film, coba lagi!'); window.history.back();</script>";
+    }
+
+    $conn->close();
 }
 ?>
 
