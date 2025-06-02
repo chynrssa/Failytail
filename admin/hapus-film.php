@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
