@@ -59,10 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="password" name="password" placeholder="Password"
              class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#00bfe7]" required>
 
-      <select name="role" class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#00bfe7]" required>
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-      </select>
+     
 
       <button type="submit"
               class="w-full bg-[#00bfe7] hover:bg-[#00aac5] transition text-white font-semibold py-3 rounded shadow">
