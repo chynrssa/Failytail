@@ -8,14 +8,14 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
 // Ambil data poster film untuk dihapus dari folder
-$sqlGetPoster = "SELECT poster FROM films WHERE id='$id'";
+$sqlGetPoster = "SELECT poster FROM film WHERE id='$id'";
 $result = $conn->query($sqlGetPoster);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
 }
 
 // Hapus film dari database
-$sqlDeleteFilm = "DELETE FROM films WHERE id='$id'";
+$sqlDeleteFilm = "DELETE FROM film WHERE id='$id'";
 if ($conn->query($sqlDeleteFilm) === TRUE) {
     $status = "Film berhasil dihapus!";
     $isSuccess = true;
@@ -39,7 +39,6 @@ if ($conn->query($sqlDeleteFilm) === TRUE) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
