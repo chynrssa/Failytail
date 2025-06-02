@@ -6,12 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $judul = $_POST['judul'];
     $genre = $_POST['genre'];
-    $tahun_rilis = $_POST['tahun_rilis']; // Tambahan sesuai SQL
-    $rating = $_POST['rating']; // Tambahan sesuai SQL
-    $komentar = $_POST['komentar']; // Tambahan sesuai SQL
     $poster = $_FILES['poster'];
 
-    $conn = new mysqli($host, $user, $pass, $dbname);
+    $conn = new mysqli($host, $user, $pass, $db); // Pastikan koneksi benar
     if ($conn->connect_error) {
         die("Koneksi gagal: " . $conn->connect_error);
     }
@@ -25,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Proses upload poster baru jika ada
+    $updatePosterQuery = "";
     if (!empty($poster["name"])) {
         $targetDir = "../image/posters/";
         $newPosterName = time() . "_" . basename($poster["name"]);
@@ -35,31 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (file_exists($oldPosterFile)) {
                 unlink($oldPosterFile);
             }
-            $updatePoster = ", poster='$newPosterName'";
-        } else {
-            $status = "Gagal mengupload poster!";
-            $isSuccess = false;
+            $updatePosterQuery = ", poster='$newPosterName'";
         }
-    } else {
-        $updatePoster = "";
     }
 
-    // Update data film agar sesuai dengan tabel yang diberikan
-    $sqlUpdateFilm = "UPDATE film SET 
-        judul='$judul', 
-        genre='$genre', 
-        tahun_rilis='$tahun_rilis', 
-        rating='$rating', 
-        komentar='$komentar'
-        $updatePoster 
-        WHERE id='$id'";
+    // Update data film dengan sintaks SQL yang benar
+    $sqlUpdateFilm = "UPDATE film SET judul='$judul', genre='$genre' $updatePosterQuery WHERE id='$id'";
 
     if ($conn->query($sqlUpdateFilm) === TRUE) {
-        $status = "Film berhasil diperbarui!";
-        $isSuccess = true;
+        echo "<script>alert('Film berhasil diperbarui!'); window.location.href='dashboard.html';</script>";
     } else {
-        $status = "Gagal memperbarui film, coba lagi!";
-        $isSuccess = false;
+        echo "<script>alert('Gagal memperbarui film, coba lagi!'); window.history.back();</script>";
     }
 
     $conn->close();
