@@ -111,8 +111,7 @@
         <div class="text-center">
           <h3 class="text-lg font-semibold mb-4">Jelajahi Failytail</h3>
           <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-primary transition">Tentang Failytail</a></li>
-            <li><a href="#" class="hover:text-primary transition">Ulasan Terpopuler</a></li>
+            <li><a href="/FAILYTAIL/pengguna/ulasan/ulasan.php" class="hover:text-primary transition">Ulasan Terpopuler</a></li>
             <li><a href="pengguna/faq/website.html" class="hover:text-primary transition">Pertanyaan Umum</a></li>
           </ul>
         </div>

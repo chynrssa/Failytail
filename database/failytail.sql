@@ -47,6 +47,9 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
+ALTER TABLE users ADD COLUMN email VARCHAR(100);
+ALTER TABLE users ADD COLUMN phone VARCHAR(20);
+
 -- --------------------------------------------------------
 -- Struktur tabel `film`
 -- --------------------------------------------------------

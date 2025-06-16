@@ -11,32 +11,14 @@
     />
   </head>
   <body class="bg-gray-100 text-gray-800 font-sans">
-    <!-- Header -->
-    <header
-      class="bg-[#00bfe7] text-white p-6 flex items-center justify-between shadow-md"
-    >
-      <div class="flex items-center gap-4">
-        <img src="../image/logo_failytail.png" alt="Logo" class="h-12" />
-        <h1 class="text-2xl font-bold">Failytail</h1>
-      </div>
-      <nav class="flex items-center gap-6">
-        <a href="dashboard.html" class="hover:underline">Beranda</a>
-        <a href="#" class="hover:underline">Film Saya</a>
-        <a href="dashboard.html" class="hover:underline">Keluar</a>
-        <img
-          src="../image/akun_pengguna.png"
-          alt="Profil"
-          class="h-10 w-10 rounded-full border-2 border-white"
-        />
-      </nav>
-    </header>
+
+    <!-- Header pakai include -->
+    <?php include '../view/layout/header.php'; ?>
 
     <!-- Main content -->
     <main class="max-w-6xl mx-auto py-10 px-4">
       <!-- Profil Section -->
-      <section
-        class="bg-white shadow-md rounded-lg p-6 flex gap-6 items-center"
-      >
+      <section class="bg-white shadow-md rounded-lg p-6 flex gap-6 items-center">
         <img
           src="../image/推し男子高校生メーカー.jpg"
           alt="Foto Profil"
@@ -74,7 +56,6 @@
       <section class="mt-10">
         <h3 class="text-2xl font-bold mb-4">🎬 Film Favorit</h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <!-- Card Film -->
           <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <img
               src="../image/Inception.jpg"
@@ -97,7 +78,6 @@
               <p class="text-sm text-gray-600">Rating: ⭐ 4.7</p>
             </div>
           </div>
-          <!-- Tambah lebih banyak card sesuai kebutuhan -->
         </div>
       </section>
 
@@ -139,9 +119,7 @@
     </main>
 
     <!-- Footer -->
-    <footer
-      class="bg-white text-center text-sm text-gray-500 py-4 mt-10 border-t"
-    >
+    <footer class="bg-white text-center text-sm text-gray-500 py-4 mt-10 border-t">
       © 2025 Failytail. Semua Hak Dilindungi.
     </footer>
   </body>

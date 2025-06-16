@@ -75,30 +75,32 @@ $username = $is_logged_in ? $_SESSION['username'] : '';
       <div class="container mx-auto px-4">
         <ul class="flex overflow-x-auto whitespace-nowrap py-3 space-x-8 text-sm font-medium">
           <li><a href="/FAILYTAIL/index.php" class="text-white hover:text-black transition">Beranda</a></li>
-          <li><a href="#" class="text-white hover:text-black transition">Film Terbaru</a></li>
+          <li><a href="/FAILYTAIL/pengguna/profile.php" class="text-white hover:text-black transition">Profile</a></li>
           <li><a href="/FAILYTAIL/pengguna/ulasan/ulasan.php" class="text-white hover:text-black transition">Top Ulasan</a></li>
           <li><a href="/FAILYTAIL/pengguna/faq/website.php" class="text-white hover:text-black transition">FAQ</a></li>
         </ul>
       </div>
 
       <!-- Login/Daftar atau Akun -->
-      <div class="flex space-x-3">
-        <?php if ($is_logged_in): ?>
-          <div class="flex items-center space-x-4">
-            <span class="text-black font-semibold text-sm shadow-sm">Hai, <?= htmlspecialchars($username) ?></span>
+      <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-3">
+          <?php if ($is_logged_in): ?>
+            <span class="text-black font-semibold text-sm shadow-sm">
+              Hai, <?= htmlspecialchars($_SESSION['username']) ?>
+            </span>
             <a href="/FAILYTAIL/pengguna/logout.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
               Logout
             </a>
-          </div>
-        <?php else: ?>
-          <a href="/FAILYTAIL/login.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
-            Login
-          </a>
-          <a href="/FAILYTAIL/register.php" class="bg-primary text-white px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-opacity-90 transition">
-            Daftar
-          </a>
-        <?php endif; ?>
+          <?php else: ?>
+            <a href="/FAILYTAIL/login.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
+              Login
+            </a>
+            <a href="/FAILYTAIL/register.php" class="bg-primary text-white px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-opacity-90 transition">
+              Daftar
+            </a>
+          <?php endif; ?>
       </div>
+
 
 
   </header>

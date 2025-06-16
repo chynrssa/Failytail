@@ -1,6 +1,6 @@
 <?php include '../../view/layout/header.php'; ?>
   <body class="bg-gray-50 text-gray-800 min-h-screen">
-    <div class="container mx-auto  max-w-7xl">
+    <div class="container mx-auto max-w-7xl py-3 px-2 flex-grow">
       <div class="flex justify-between items-center mb-8">
         <h1 class="text-2xl font-bold">Ulasan Terpopuler</h1>
 
@@ -366,7 +366,7 @@
                 <span class="text-xs">185</span>
               </div>
               <div class="flex items-center text-gray-500">
-                <i class="ri-chat-1-line mr-1"></i>
+                <i class="ri-chat-1-line mr-6"></i>
                 <span class="text-xs">37</span>
               </div>
             </div>
