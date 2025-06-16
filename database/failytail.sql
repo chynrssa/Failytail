@@ -79,3 +79,18 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+-- Struktur tabel `ulasan`
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS ulasan (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  film_id INT NOT NULL,
+  komentar TEXT NOT NULL,
+  rating DECIMAL(2,1) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (film_id) REFERENCES film(id) ON DELETE CASCADE
+);

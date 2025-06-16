@@ -4,7 +4,12 @@
       <div class="flex justify-between items-center mb-8">
         <h1 class="text-2xl font-bold">Ulasan Terpopuler</h1>
 
-      </div>
+        <a href="/FAILYTAIL/pengguna/ulasan/input_ulasan.php"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow transition">
+            + Beri Ulasan
+        </a>
+</div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Ulasan 1 -->
         <div
