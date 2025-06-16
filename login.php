@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $row['role'];
+        $_SESSION['loggedin'] = true;
+
 
         if ($row['role'] == 'admin') {
             header("Location: /FAILYTAIL/admin/dashboard.html");
@@ -48,15 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         class="absolute inset-0 w-full h-full object-cover opacity-50"
       />
       <div class="relative z-10 text-center">
-        <h1 class="text-4xl font-extrabold leading-snug">Temukan Event<br>Luar Biasa</h1>
-        <p class="mt-4 text-lg text-gray-200">Bergabunglah dengan ribuan orang menikmati konser dan acara terbaik!</p>
+        <h1 class="text-4xl font-extrabold leading-snug">Temukan Pengalam Film<br>Luar Biasa</h1>
+        <p class="mt-4 text-lg text-gray-200">Bergabunglah dengan ribuan orang menikmati film dan acara terbaik!</p>
       </div>
     </div>
 
     <!-- RIGHT SIDE: FORM -->
     <div class="md:w-1/2 w-full p-10">
       <h2 class="text-3xl font-extrabold text-[#00bfe7] text-center">Failytail</h2>
-      <p class="text-center text-gray-600 mt-1 mb-8">Masuk ke akunmu untuk mulai menjelajah event</p>
+      <p class="text-center text-gray-600 mt-1 mb-8">Masuk ke akunmu untuk mulai menjelajah Pengalam Film</p>
 
       <?php if (!empty($error)): ?>
         <div class="bg-red-500 text-white p-3 rounded mb-4 text-center animate-pulse">

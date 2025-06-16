@@ -1,7 +1,6 @@
 <?php
 include 'view/layout/header.php';
 ?>
-    
 <section class="bg-white py-1">
   <!-- Gambar dan Teks -->
   <div class="container mx-auto px-4">
@@ -38,17 +37,18 @@ include 'view/layout/header.php';
     <!-- Film Categories -->
     <section class="py-8 bg-gray-50">
       <div class="container mx-auto px-4 mb-6">
-  <div class="relative w-full max-w-[50%] mx-auto"> <!-- HANYA 50% dari lebar gambar -->
-    <input
-      type="text"
-      placeholder="Cari film, ulasan, atau pengguna..."
-      class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md"
-    />
-    <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-      <i class="ri-search-line text-base"></i>
-    </div>
-  </div>
-</div>
+          <div class="relative w-full max-w-[50%] mx-auto"> <!-- HANYA 50% dari lebar gambar -->
+            <input
+              type="text"
+              placeholder="Cari film, ulasan, atau pengguna..."
+              class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md"
+            />
+            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+              <i class="ri-search-line text-base"></i>
+            </div>
+          </div>
+      </div>
+      
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold text-gray-800">Kategori Film</h2>
@@ -267,7 +267,7 @@ include 'view/layout/header.php';
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold text-gray-800">Ulasan Terpopuler</h2>
           <a
-            href="#"
+            href="/FAILYTAIL/pengguna/ulasan/ulasan.php"
             class="text-primary font-medium text-sm flex items-center"
           >
             Lihat Semua

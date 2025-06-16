@@ -1,6 +1,7 @@
 <?php
 session_start();
 $is_logged_in = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+$username = $is_logged_in ? $_SESSION['username'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +60,7 @@ $is_logged_in = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
   <!-- Header -->
   <header class="gradient-bg text-white fixed top-0 left-0 w-full z-50 shadow-md">
     <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
-      
+
       <!-- Logo -->
       <div class="flex items-center mb-4 md:mb-0 md:mr-12">
         <div class="w-10 h-10 flex items-center justify-center mr-2 bg-white rounded-lg">
@@ -80,19 +81,26 @@ $is_logged_in = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
         </ul>
       </div>
 
-      <!-- Login/Daftar atau Akun (jika sudah login) -->
+      <!-- Login/Daftar atau Akun -->
       <div class="flex space-x-3">
         <?php if ($is_logged_in): ?>
           <div class="flex items-center space-x-4">
-            <span class="text-sm">Hai, <?= htmlspecialchars($_SESSION['username']) ?></span>
-            <a href="logout.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">Logout</a>
+            <span class="text-black font-semibold text-sm shadow-sm">Hai, <?= htmlspecialchars($username) ?></span>
+            <a href="/FAILYTAIL/pengguna/logout.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
+              Logout
+            </a>
           </div>
         <?php else: ?>
-          <button class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">Login</button>
-          <button class="bg-primary text-white px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-opacity-90 transition">Daftar</button>
+          <a href="/FAILYTAIL/login.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
+            Login
+          </a>
+          <a href="/FAILYTAIL/register.php" class="bg-primary text-white px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-opacity-90 transition">
+            Daftar
+          </a>
         <?php endif; ?>
       </div>
-    </div>
+
+
   </header>
 
   <!-- Spacer agar konten tidak tertutupi header -->
