@@ -79,12 +79,15 @@
       <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 justify-items-center">
         <!-- Kolom 1 -->
         <div class="text-center">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-10 h-10 flex items-center justify-center mr-2 text-primary bg-white rounded-lg">
-              <i class="ri-movie-2-line ri-lg"></i>
+         <div class="flex items-center justify-center mb-12 md:mb-0 md:mr-19">
+            <div class="w-10 h-10 flex items-center justify-center mr-2 bg-white rounded-lg">
+                <a href="#">
+                <img src="/FAILYTAIL/image/logo_failytail.png" alt="Logo" class="w-10 h-10 object-contain" />
+                </a>
             </div>
-            <a href="#" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
-          </div>
+                 <a href="/FAILYTAIL/index.php" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
+            </div>
+
           <p class="text-gray-400 text-sm mb-4 max-w-xs mx-auto">
             Platform berbagi pengalaman menonton film terbesar di Indonesia. Temukan film favorit dan bagikan ceritamu.
           </p>
@@ -109,8 +112,8 @@
           <h3 class="text-lg font-semibold mb-4">Jelajahi Failytail</h3>
           <ul class="space-y-2 text-gray-400">
             <li><a href="#" class="hover:text-primary transition">Tentang Failytail</a></li>
-            <li><a href="#" class="hover:text-primary transition">Fitur Platform</a></li>
-            <li><a href="#" class="hover:text-primary transition">Pertanyaan Umum</a></li>
+            <li><a href="#" class="hover:text-primary transition">Ulasan Terpopuler</a></li>
+            <li><a href="pengguna/faq/website.html" class="hover:text-primary transition">Pertanyaan Umum</a></li>
           </ul>
         </div>
 
