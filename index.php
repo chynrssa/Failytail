@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Failytail - Berbagi Pengalaman Menonton Film</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#00BCD4", secondary: "#0097A7" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+      background: linear-gradient(135deg, #00BCD4 0%, #B2EBF2 100%);
+      }
+      .hero-gradient {
+      background: linear-gradient(90deg, rgba(0,188,212,0.9) 0%, rgba(0,151,167,0.8) 100%);
+      }
+      .search-input:focus {
+      outline: none;
+      }
+      .custom-shadow {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .film-card:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+      }
+      .star-rating input {
+      display: none;
+      }
+      .star-rating label {
+      cursor: pointer;
+      }
+      .star-rating label:hover,
+      .star-rating label:hover ~ label,
+      .star-rating input:checked ~ label {
+      color: #FFD700;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+      <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center mb-4 md:mb-0 md:mr-12">
+          <!-- Logo dengan gambar di dalam kotak putih -->
+          <div class="w-10 h-10 flex items-center justify-center mr-2 bg-white rounded-lg">
+            <a href="#">
+              <img src="image/logo_failytail.png" alt="Logo" class="w-10 h-10 object-contain" />
+            </a>
+          </div>
+          <a href="#" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
+        </div>
+
+        <div class="container mx-auto px-4">
+          <ul
+            class="flex overflow-x-auto whitespace-nowrap py-3 space-x-8 text-sm font-medium"
+          >
+            <li>
+              <a href="#" class="text-white border-b-2 border-black pb-3"
+                >Beranda</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-white-700 hover:text-black transition"
+                >Film Terbaru</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-white-700 hover:text-black transition"
+                >Top Ulasan</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-white-700 hover:text-black transition"
+                >Komunitas</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-white-700 hover:text-black transition"
+                >Trending</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex space-x-3">
+          <button
+            class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition"
+          >
+            Login
+          </button>
+          <button
+            class="bg-primary text-white px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-opacity-90 transition"
+          >
+            Daftar
+          </button>
+        </div>
+      </div>
+      <!-- Navigation -->
+    </header>
+    
+<section class="bg-white py-6">
+  <!-- Gambar dan Teks -->
+  <div class="container mx-auto px-4">
+    <div class="relative rounded-xl overflow-hidden h-64 md:h-64">
+      <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
+      <img
+        src="https://readdy.ai/api/search-image?query=cinematic%20scene%20with%20movie%20theater%20audience%20watching%20an%20exciting%20film%2C%20dramatic%20lighting%2C%20immersive%20experience%2C%20people%20sharing%20emotions%2C%20high%20quality%20professional%20photography&width=1280&height=500&seq=1&orientation=landscape"
+        alt="Film Experience"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute top-0 left-0 w-full h-full flex items-center z-20">
+        <div class="text-white px-8 md:px-16 max-w-2xl">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            Temukan Film Favoritmu
+          </h1>
+          <p class="text-lg mb-6">
+            Baca ulasan dari penonton lain dan bagikan pengalamanmu sendiri setelah menonton film.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <button class="bg-primary text-white px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-opacity-90 transition">
+              Jelajahi Film
+            </button>
+            <button class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-gray-100 transition">
+              Tulis Ulasan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Film Categories -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4 mb-6">
+  <div class="relative w-full max-w-[50%] mx-auto"> <!-- HANYA 50% dari lebar gambar -->
+    <input
+      type="text"
+      placeholder="Cari film, ulasan, atau pengguna..."
+      class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md"
+    />
+    <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+      <i class="ri-search-line text-base"></i>
+    </div>
+  </div>
+</div>
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Kategori Film</h2>
+          <a
+            href="#"
+            class="text-primary font-medium text-sm flex items-center"
+          >
+            Lihat Semua
+            <i class="ri-arrow-right-line ml-1"></i>
+          </a>
+        </div>
+        <!-- Category Tabs -->
+        <div class="flex overflow-x-auto whitespace-nowrap mb-6 pb-2">
+          <button
+            class="bg-primary text-white px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap"
+          >
+            Semua
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Action
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Drama
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Comedy
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Horror
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Sci-Fi
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
+          >
+            Romance
+          </button>
+          <button
+            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm whitespace-nowrap hover:bg-gray-100"
+          >
+            Thriller
+          </button>
+        </div>
+        <!-- Films Grid -->
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
+        >
+          <!-- Film 1 -->
+          <div
+            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20inception%2C%20dream%20within%20dreams%20concept%2C%20professional%20movie%20poster%20style%2C%20dark%20blue%20tones&width=300&height=450&seq=2&orientation=portrait"
+                alt="Inception"
+                class="w-full h-60 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+              >
+                9.2
+              </div>
+            </div>
+            <div class="p-3">
+              <h3 class="font-semibold text-gray-800 mb-1">Inception</h3>
+              <div class="flex items-center text-yellow-500 text-xs mb-1">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="text-gray-500 ml-1">(128)</span>
+              </div>
+              <p class="text-xs text-gray-500">
+                Mimpi dalam mimpi dalam mimpi...
+              </p>
+            </div>
+          </div>
+          <!-- Film 2 -->
+          <div
+            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20evangelion%203.0%2C%20anime%20style%2C%20professional%20movie%20poster%2C%20dark%20tones%20with%20white%20and%20red%20accents&width=300&height=450&seq=3&orientation=portrait"
+                alt="Evangelion 3.0"
+                class="w-full h-60 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+              >
+                8.7
+              </div>
+            </div>
+            <div class="p-3">
+              <h3 class="font-semibold text-gray-800 mb-1">Evangelion 3.0</h3>
+              <div class="flex items-center text-yellow-500 text-xs mb-1">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-line"></i>
+                <span class="text-gray-500 ml-1">(95)</span>
+              </div>
+              <p class="text-xs text-gray-500">
+                Keanu Reeves: Bringing You Good Fortune
+              </p>
+            </div>
+          </div>
+          <!-- Film 3 -->
+          <div
+            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20oppenheimer%2C%20dramatic%20portrait%20with%20fire%20and%20explosion%20elements%2C%20professional%20movie%20poster%20style%2C%20orange%20and%20red%20tones&width=300&height=450&seq=4&orientation=portrait"
+                alt="Oppenheimer"
+                class="w-full h-60 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+              >
+                9.5
+              </div>
+            </div>
+            <div class="p-3">
+              <h3 class="font-semibold text-gray-800 mb-1">Oppenheimer</h3>
+              <div class="flex items-center text-yellow-500 text-xs mb-1">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <span class="text-gray-500 ml-1">(210)</span>
+              </div>
+              <p class="text-xs text-gray-500">
+                Mala Kealoha: Best Interview Ever
+              </p>
+            </div>
+          </div>
+          <!-- Film 4 -->
+          <div
+            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20perfect%20blue%2C%20anime%20style%2C%20psychological%20thriller%2C%20professional%20movie%20poster%2C%20blue%20tones&width=300&height=450&seq=5&orientation=portrait"
+                alt="Perfect Blue"
+                class="w-full h-60 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+              >
+                8.9
+              </div>
+            </div>
+            <div class="p-3">
+              <h3 class="font-semibold text-gray-800 mb-1">Perfect Blue</h3>
+              <div class="flex items-center text-yellow-500 text-xs mb-1">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="text-gray-500 ml-1">(87)</span>
+              </div>
+              <p class="text-xs text-gray-500">Lilo & Stitch: Meet the Stars</p>
+            </div>
+          </div>
+          <!-- Film 5 -->
+          <div
+            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20the%20martian%2C%20mars%20landscape%2C%20astronaut%2C%20professional%20movie%20poster%20style%2C%20red%20tones&width=300&height=450&seq=6&orientation=portrait"
+                alt="The Martian"
+                class="w-full h-60 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+              >
+                9.0
+              </div>
+            </div>
+            <div class="p-3">
+              <h3 class="font-semibold text-gray-800 mb-1">The Martian</h3>
+              <div class="flex items-center text-yellow-500 text-xs mb-1">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="text-gray-500 ml-1">(156)</span>
+              </div>
+              <p class="text-xs text-gray-500">Survival on Mars</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Popular Reviews -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Ulasan Terpopuler</h2>
+          <a
+            href="#"
+            class="text-primary font-medium text-sm flex items-center"
+          >
+            Lihat Semua
+            <i class="ri-arrow-right-line ml-1"></i>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Review 1 -->
+          <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-3-line text-gray-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800">Budi Santoso</h4>
+                <p class="text-xs text-gray-500">16 Juni 2025</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-3">
+              <h3 class="font-semibold text-gray-800 mr-3">Inception</h3>
+              <div class="flex items-center text-yellow-500 text-xs">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              Film ini benar-benar mengagumkan! Konsep mimpi dalam mimpi sangat
+              brilian dan membuat saya berpikir selama berhari-hari. Christopher
+              Nolan memang jenius dalam menciptakan cerita yang kompleks namun
+              tetap bisa diikuti...
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary text-sm font-medium"
+                >Baca Selengkapnya</a
+              >
+              <div class="flex items-center space-x-4 text-gray-500 text-sm">
+                <div class="flex items-center">
+                  <i class="ri-thumb-up-line mr-1"></i>
+                  <span>128</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="ri-chat-1-line mr-1"></i>
+                  <span>24</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Review 2 -->
+          <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-3-line text-gray-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800">Dewi Lestari</h4>
+                <p class="text-xs text-gray-500">14 Juni 2025</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-3">
+              <h3 class="font-semibold text-gray-800 mr-3">Oppenheimer</h3>
+              <div class="flex items-center text-yellow-500 text-xs">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              Akting Cillian Murphy luar biasa menghidupkan karakter
+              Oppenheimer. Film ini tidak hanya bercerita tentang pembuatan bom
+              atom, tetapi juga menggali sisi moral dan etika dari penemuan yang
+              mengubah dunia. Cinematografinya juga sangat memukau...
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary text-sm font-medium"
+                >Baca Selengkapnya</a
+              >
+              <div class="flex items-center space-x-4 text-gray-500 text-sm">
+                <div class="flex items-center">
+                  <i class="ri-thumb-up-line mr-1"></i>
+                  <span>95</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="ri-chat-1-line mr-1"></i>
+                  <span>18</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Review 3 -->
+          <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-3-line text-gray-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800">Andi Pratama</h4>
+                <p class="text-xs text-gray-500">15 Juni 2025</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-3">
+              <h3 class="font-semibold text-gray-800 mr-3">The Martian</h3>
+              <div class="flex items-center text-yellow-500 text-xs">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-line"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              Saya sangat menikmati bagaimana film ini menggabungkan sains yang
+              akurat dengan humor. Matt Damon berhasil membuat karakter Mark
+              Watney menjadi sangat menghibur meskipun dalam situasi hidup dan
+              mati. Pemandangan Mars juga sangat menakjubkan...
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary text-sm font-medium"
+                >Baca Selengkapnya</a
+              >
+              <div class="flex items-center space-x-4 text-gray-500 text-sm">
+                <div class="flex items-center">
+                  <i class="ri-thumb-up-line mr-1"></i>
+                  <span>76</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="ri-chat-1-line mr-1"></i>
+                  <span>12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Film Detail Section -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Detail Film</h2>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <!-- Film Info -->
+            <div class="md:w-1/3 p-6">
+              <div class="relative mb-4">
+                <img
+                  src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20inception%2C%20dream%20within%20dreams%20concept%2C%20professional%20movie%20poster%20style%2C%20dark%20blue%20tones%2C%20high%20quality&width=400&height=600&seq=7&orientation=portrait"
+                  alt="Inception"
+                  class="w-full h-auto rounded-lg"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-primary text-white text-sm px-2 py-1 rounded-full"
+                >
+                  9.2
+                </div>
+              </div>
+              <h1 class="text-2xl font-bold text-gray-800 mb-2">
+                Inception (2010)
+              </h1>
+              <div class="flex items-center mb-4">
+                <div class="flex items-center text-yellow-500 mr-2">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-half-fill"></i>
+                </div>
+                <span class="text-gray-600 text-sm">9.2/10 (1,283 ulasan)</span>
+              </div>
+              <div class="mb-4">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full"
+                    >Sci-Fi</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full"
+                    >Action</span
+                  >
+                  <span
+                    class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full"
+                    >Thriller</span
+                  >
+                </div>
+              </div>
+              <div class="mb-4">
+                <h3 class="text-sm font-semibold text-gray-700 mb-2">
+                  Sutradara
+                </h3>
+                <p class="text-sm text-gray-600">Christopher Nolan</p>
+              </div>
+              <div class="mb-4">
+                <h3 class="text-sm font-semibold text-gray-700 mb-2">
+                  Pemeran
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom
+                  Hardy, Ken Watanabe
+                </p>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-gray-700 mb-2">
+                  Sinopsis
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Dom Cobb adalah pencuri ulung yang mencuri rahasia berharga
+                  dari dalam alam bawah sadar saat pikiran target sedang berada
+                  dalam keadaan mimpi. Kemampuan langka Cobb telah menjadikannya
+                  pemain berharga dalam dunia spionase korporat yang berbahaya,
+                  tetapi juga membuatnya menjadi buronan internasional dan
+                  memaksanya untuk meninggalkan kehidupan yang pernah ia kenal.
+                </p>
+              </div>
+            </div>
+            <!-- Reviews Section -->
+            <div
+              class="md:w-2/3 border-t md:border-t-0 md:border-l border-gray-200"
+            >
+              <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                  <h2 class="text-xl font-bold text-gray-800">
+                    Ulasan Penonton
+                  </h2>
+                  <div class="flex items-center space-x-3">
+                    <button
+                      class="flex items-center text-sm text-gray-600 hover:text-primary"
+                    >
+                      <i class="ri-filter-3-line mr-1"></i>
+                      <span>Filter</span>
+                    </button>
+                    <button
+                      class="flex items-center text-sm text-gray-600 hover:text-primary"
+                    >
+                      <i class="ri-sort-desc-line mr-1"></i>
+                      <span>Terbaru</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- Write Review -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                  <h3 class="text-sm font-semibold text-gray-700 mb-3">
+                    Tulis Ulasan Anda
+                  </h3>
+                  <div class="flex items-center mb-3">
+                    <p class="text-sm text-gray-600 mr-3">Rating:</p>
+                    <div class="star-rating flex text-gray-400">
+                      <input type="radio" id="star5" name="rating" value="5" />
+                      <label for="star5"><i class="ri-star-fill"></i></label>
+                      <input type="radio" id="star4" name="rating" value="4" />
+                      <label for="star4"><i class="ri-star-fill"></i></label>
+                      <input type="radio" id="star3" name="rating" value="3" />
+                      <label for="star3"><i class="ri-star-fill"></i></label>
+                      <input type="radio" id="star2" name="rating" value="2" />
+                      <label for="star2"><i class="ri-star-fill"></i></label>
+                      <input type="radio" id="star1" name="rating" value="1" />
+                      <label for="star1"><i class="ri-star-fill"></i></label>
+                    </div>
+                  </div>
+                  <textarea
+                    placeholder="Bagikan pendapat Anda tentang film ini..."
+                    class="w-full p-3 border border-gray-200 rounded-lg text-sm mb-3 focus:outline-none focus:border-primary"
+                    rows="3"
+                  ></textarea>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <input type="checkbox" id="spoiler" class="mr-2" />
+                      <label for="spoiler" class="text-sm text-gray-600"
+                        >Mengandung spoiler</label
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-opacity-90 transition"
+                    >
+                      Kirim Ulasan
+                    </button>
+                  </div>
+                </div>
+                <!-- Review List -->
+                <div class="space-y-5">
+                  <!-- Review 1 -->
+                  <div class="border-b border-gray-100 pb-5">
+                    <div class="flex items-center mb-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+                      >
+                        <i class="ri-user-3-line text-gray-500"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-medium text-gray-800">Budi Santoso</h4>
+                        <div class="flex items-center">
+                          <div
+                            class="flex items-center text-yellow-500 text-xs mr-2"
+                          >
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                          </div>
+                          <p class="text-xs text-gray-500">16 Juni 2025</p>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">
+                      Film ini benar-benar mengagumkan! Konsep mimpi dalam mimpi
+                      sangat brilian dan membuat saya berpikir selama
+                      berhari-hari. Christopher Nolan memang jenius dalam
+                      menciptakan cerita yang kompleks namun tetap bisa diikuti.
+                      Akting dari seluruh pemeran juga sangat meyakinkan,
+                      terutama Leonardo DiCaprio yang berhasil menampilkan emosi
+                      yang mendalam. Visual efeknya juga luar biasa untuk film
+                      yang dirilis tahun 2010. Sangat direkomendasikan!
+                    </p>
+                    <div
+                      class="flex items-center space-x-4 text-gray-500 text-sm"
+                    >
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-thumb-up-line mr-1"></i>
+                        <span>128</span>
+                      </button>
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-chat-1-line mr-1"></i>
+                        <span>24</span>
+                      </button>
+                      
+                    </div>
+                  </div>
+                  <!-- Review 2 -->
+                  <div class="border-b border-gray-100 pb-5">
+                    <div class="flex items-center mb-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+                      >
+                        <i class="ri-user-3-line text-gray-500"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-medium text-gray-800">Siti Rahayu</h4>
+                        <div class="flex items-center">
+                          <div
+                            class="flex items-center text-yellow-500 text-xs mr-2"
+                          >
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                          </div>
+                          <p class="text-xs text-gray-500">14 Juni 2025</p>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">
+                      Saya suka film ini, tapi harus mengakui bahwa alurnya
+                      kadang terlalu rumit untuk diikuti. Perlu menonton
+                      beberapa kali untuk benar-benar memahami semua lapisan
+                      ceritanya. Musik Hans Zimmer sangat memukau dan menambah
+                      ketegangan di setiap adegan. Ending-nya juga sangat
+                      menarik dan membuat penasaran, meskipun sedikit ambigu.
+                      Secara keseluruhan, ini adalah film yang sangat bagus
+                      dengan konsep yang orisinal.
+                    </p>
+                    <div
+                      class="flex items-center space-x-4 text-gray-500 text-sm"
+                    >
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-thumb-up-line mr-1"></i>
+                        <span>87</span>
+                      </button>
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-chat-1-line mr-1"></i>
+                        <span>15</span>
+                      </button>
+                      
+                    </div>
+                  </div>
+                  <!-- Review 3 -->
+                  <div>
+                    <div class="flex items-center mb-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3"
+                      >
+                        <i class="ri-user-3-line text-gray-500"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-medium text-gray-800">Agus Wijaya</h4>
+                        <div class="flex items-center">
+                          <div
+                            class="flex items-center text-yellow-500 text-xs mr-2"
+                          >
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                          </div>
+                          <p class="text-xs text-gray-500">12 Juni 2025</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="bg-yellow-50 border-l-4 border-yellow-400 p-3 mb-3"
+                    >
+                      <div
+                        class="flex items-center text-yellow-600 text-xs mb-1"
+                      >
+                        <i class="ri-alert-line mr-1"></i>
+                        <span>Peringatan: Ulasan ini mengandung spoiler</span>
+                      </div>
+                      <p class="text-gray-600 text-sm">
+                        Saya sangat terkesan dengan bagaimana Nolan
+                        menggambarkan hubungan emosional antara Cobb dan
+                        istrinya, Mal. Twist di akhir film ketika kita
+                        mengetahui bahwa Mal sebenarnya sudah meninggal dan
+                        hanya ada dalam pikiran Cobb sangat mengharukan. Adegan
+                        terakhir dengan gasing yang berputar juga sangat ikonik,
+                        membuat kita bertanya-tanya apakah Cobb masih berada
+                        dalam mimpi atau sudah kembali ke realitas. Menurut
+                        saya, ini adalah salah satu film terbaik dalam dekade
+                        terakhir.
+                      </p>
+                    </div>
+                    <div
+                      class="flex items-center space-x-4 text-gray-500 text-sm"
+                    >
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-thumb-up-line mr-1"></i>
+                        <span>65</span>
+                      </button>
+                      <button class="flex items-center hover:text-primary">
+                        <i class="ri-chat-1-line mr-1"></i>
+                        <span>9</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pagination -->
+                <div class="flex justify-center mt-8">
+                  <div class="flex space-x-1">
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
+                    >
+                      <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white"
+                    >
+                      1
+                    </button>
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+                    >
+                      2
+                    </button>
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+                    >
+                      3
+                    </button>
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
+                    >
+                      <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-6">
+  <div class="container mx-auto px-4">
+    <!-- Grid Tengah -->
+    <div class="flex flex-col items-center">
+      <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 justify-items-center">
+        <!-- Kolom 1 -->
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 flex items-center justify-center mr-2 text-primary bg-white rounded-lg">
+              <i class="ri-movie-2-line ri-lg"></i>
+            </div>
+            <a href="#" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 max-w-xs mx-auto">
+            Platform berbagi pengalaman menonton film terbesar di Indonesia. Temukan film favorit dan bagikan ceritamu.
+          </p>
+          <div class="flex justify-center space-x-4">
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+              <i class="ri-facebook-fill"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+              <i class="ri-instagram-line"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+              <i class="ri-youtube-fill"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom 2 -->
+        <div class="text-center">
+          <h3 class="text-lg font-semibold mb-4">Jelajahi Failytail</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-primary transition">Tentang Failytail</a></li>
+            <li><a href="#" class="hover:text-primary transition">Fitur Platform</a></li>
+            <li><a href="#" class="hover:text-primary transition">Pertanyaan Umum</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 -->
+        <div class="text-center">
+          <h3 class="text-lg font-semibold mb-4">Hubungi Kami</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex justify-center items-center">
+              <i class="ri-mail-line mr-2"></i>
+              <span>support@failytail.id</span>
+            </li>
+            <li class="flex justify-center items-center">
+              <i class="ri-phone-line mr-2"></i>
+              <span>+62 21 1234 5678</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="w-full max-w-6xl border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <p class="mb-4 md:mb-0">&copy; 2025 Failytail. Hak Cipta Dilindungi.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
+          <a href="#" class="hover:text-primary transition">Bantuan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script id="starRatingScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const starLabels = document.querySelectorAll(".star-rating label");
+        starLabels.forEach((label) => {
+          label.addEventListener("click", function () {
+            const input = document.querySelector(`#${this.getAttribute("for")}`);
+            if (input) {
+              input.checked = true;
+            }
+          });
+        });
+      });
+    </script>
+    
+    <script id="carouselScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const indicators = document.querySelectorAll(".absolute.bottom-4 button");
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", function () {
+            // Reset all indicators
+            indicators.forEach((ind) => {
+              ind.classList.remove("bg-white");
+              ind.classList.add("bg-opacity-50");
+            });
+            // Highlight current indicator
+            this.classList.remove("bg-opacity-50");
+            this.classList.add("bg-white");
+            // Here you would add logic to change the carousel slide
+          });
+        });
+      });
+    </script>
+    <script id="filterTabsScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const categoryTabs = document.querySelectorAll(
+          ".flex.overflow-x-auto.whitespace-nowrap.mb-6 button",
+        );
+        categoryTabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            // Reset all tabs
+            categoryTabs.forEach((t) => {
+              t.classList.remove("bg-primary", "text-white");
+              t.classList.add("bg-white", "text-gray-700");
+            });
+            // Highlight current tab
+            this.classList.remove("bg-white", "text-gray-700");
+            this.classList.add("bg-primary", "text-white");
+            // Here you would add logic to filter the content
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

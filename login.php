@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'koneksi/koneksi.php'; // Pastikan koneksi database
+require 'database/koneksi.php'; // Pastikan koneksi database
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
