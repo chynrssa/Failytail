@@ -1,28 +1,23 @@
 <?php
 session_start();
-require 'database/koneksi.php'; // Pastikan koneksi ke database
+require 'database/koneksi.php'; // File ini sudah membuat $conn
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $role = 'user'; // Default: Semua pendaftar adalah User
+    $role = 'user'; // Default role
 
-    $conn = new mysqli($host, $user, $pass, $dbname);
-    if ($conn->connect_error) {
-        die("Koneksi gagal: " . $conn->connect_error);
-    }
-
-    // Periksa apakah username sudah terdaftar
+    // Cek apakah username sudah terdaftar
     $checkUser = "SELECT * FROM users WHERE username='$username'";
     $result = $conn->query($checkUser);
 
     if ($result->num_rows > 0) {
         $error = "Username sudah digunakan!";
     } else {
-        // Simpan ke database dengan role default 'user'
+        // Simpan data user baru
         $sql = "INSERT INTO users (username, password, role) VALUES ('$username', MD5('$password'), '$role')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: login.php"); // Redirect ke halaman login
+            header("Location: login.php");
             exit();
         } else {
             $error = "Registrasi gagal, silakan coba lagi!";
@@ -58,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <input type="password" name="password" placeholder="Password"
              class="w-full px-4 py-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#00bfe7]" required>
-
-     
 
       <button type="submit"
               class="w-full bg-[#00bfe7] hover:bg-[#00aac5] transition text-white font-semibold py-3 rounded shadow">
