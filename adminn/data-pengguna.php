@@ -1,4 +1,12 @@
-<?php include 'header-admin.php'; ?>
+<?php
+// Koneksi ke database
+$conn = new mysqli("localhost", "root", "", "failytail");
+if ($conn->connect_error) {
+  die("Koneksi gagal: " . $conn->connect_error);
+}
+
+include 'header-admin.php';
+?>
 
 <!-- Bungkus seluruh isi dengan div fleksibel -->
 <div class="min-h-screen flex flex-col">
