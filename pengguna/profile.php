@@ -120,7 +120,7 @@
 
     <!-- Footer -->
     <footer class="bg-white text-center text-sm text-gray-500 py-4 mt-10 border-t">
-      © 2025 Failytail. Semua Hak Dilindungi.
+      © 2025 Failytail. Semua Hak Dilindungi Computer Science.
     </footer>
   </body>
 </html>
