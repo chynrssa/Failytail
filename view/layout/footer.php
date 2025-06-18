@@ -71,77 +71,93 @@
     </style>
   </head>
   <body class="bg-gray-50">
-    <!-- Header -->
-<footer class="bg-gray-800 text-white pt-12 pb-6">
-  <div class="container mx-auto px-4">
-    <!-- Grid Tengah -->
-    <div class="flex flex-col items-center">
-      <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 justify-items-center">
-        <!-- Kolom 1 -->
-        <div class="text-center">
-         <div class="flex items-center justify-center mb-12 md:mb-0 md:mr-19">
-            <div class="w-10 h-10 flex items-center justify-center mr-2 bg-white rounded-lg">
-                <a href="#">
-                <img src="/FAILYTAIL/image/logo_failytail.png" alt="Logo" class="w-10 h-10 object-contain" />
-                </a>
+    
+    <!-- Konten Utama Halaman -->
+    <!-- ... konten website Anda di sini ... -->
+    
+    <!-- Footer Dinamis Berdasarkan Peran -->
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') : ?>
+        <!-- Footer untuk Admin -->
+        <footer class="bg-gradient-to-r from-cyan-500 to-cyan-300 text-white mt-10 py-4">
+            <div class="container mx-auto text-center text-sm">
+                &copy; <?= date("Y") ?> Failytail. All rights reserved.
             </div>
-                 <a href="/FAILYTAIL/index.php" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
+        </footer>
+    <?php else : ?>
+        <!-- Footer untuk Pengguna Biasa -->
+        <footer class="bg-gray-800 text-white pt-12 pb-6">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col items-center">
+                    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 justify-items-center">
+                        <!-- Kolom 1: Logo & Deskripsi -->
+                        <div class="text-center">
+                            <div class="flex items-center justify-center mb-4 md:mb-0">
+                                <div class="w-10 h-10 flex items-center justify-center mr-2 bg-white rounded-lg">
+                                    <a href="/FAILYTAIL/index.php">
+                                        <img src="/FAILYTAIL/image/logo_failytail.png" alt="Logo" class="w-10 h-10 object-contain" />
+                                    </a>
+                                </div>
+                                <a href="/FAILYTAIL/index.php" class="font-['Pacifico'] text-2xl text-white">Failytail</a>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 max-w-xs mx-auto">
+                                Platform berbagi pengalaman menonton film terbesar di Indonesia. Temukan film favorit dan bagikan ceritamu.
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+                                    <i class="ri-facebook-fill"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+                                    <i class="ri-twitter-x-fill"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
+                                    <i class="ri-youtube-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Kolom 2: Navigasi -->
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold mb-4">Jelajahi Failytail</h3>
+                            <ul class="space-y-2 text-gray-400">
+                                <li><a href="/FAILYTAIL/pengguna/ulasan/ulasan.php" class="hover:text-primary transition">Ulasan Terpopuler</a></li>
+                                <li><a href="/FAILYTAIL/pengguna/faq/website.php" class="hover:text-primary transition">Pertanyaan Umum</a></li>
+                                <?php if (!isset($_SESSION['user_id'])) : ?>
+                                    <li><a href="/FAILYTAIL/login.php" class="hover:text-primary transition">Login/Register</a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+
+                        <!-- Kolom 3: Kontak -->
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold mb-4">Hubungi Kami</h3>
+                            <ul class="space-y-3 text-gray-400">
+                                <li class="flex justify-center items-center">
+                                    <i class="ri-mail-line mr-2"></i>
+                                    <span>support@failytail.id</span>
+                                </li>
+                                <li class="flex justify-center items-center">
+                                    <i class="ri-phone-line mr-2"></i>
+                                    <span>+62 21 1234 5678</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="w-full max-w-6xl border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                        <p class="mb-4 md:mb-0">&copy; <?= date("Y") ?> Failytail. Hak Cipta Dilindungi.</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
+                            <a href="#" class="hover:text-primary transition">Bantuan</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-          <p class="text-gray-400 text-sm mb-4 max-w-xs mx-auto">
-            Platform berbagi pengalaman menonton film terbesar di Indonesia. Temukan film favorit dan bagikan ceritamu.
-          </p>
-          <div class="flex justify-center space-x-4">
-            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
-              <i class="ri-facebook-fill"></i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
-              <i class="ri-twitter-x-fill"></i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
-              <i class="ri-instagram-line"></i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition">
-              <i class="ri-youtube-fill"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Kolom 2 -->
-        <div class="text-center">
-          <h3 class="text-lg font-semibold mb-4">Jelajahi Failytail</h3>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/FAILYTAIL/pengguna/ulasan/ulasan.php" class="hover:text-primary transition">Ulasan Terpopuler</a></li>
-            <li><a href="/FAILYTAIL/pengguna/faq/website.php" class="hover:text-primary transition">Pertanyaan Umum</a></li>
-          </ul>
-        </div>
-
-        <!-- Kolom 3 -->
-        <div class="text-center">
-          <h3 class="text-lg font-semibold mb-4">Hubungi Kami</h3>
-          <ul class="space-y-3 text-gray-400">
-            <li class="flex justify-center items-center">
-              <i class="ri-mail-line mr-2"></i>
-              <span>support@failytail.id</span>
-            </li>
-            <li class="flex justify-center items-center">
-              <i class="ri-phone-line mr-2"></i>
-              <span>+62 21 1234 5678</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Copyright -->
-      <div class="w-full max-w-6xl border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-        <p class="mb-4 md:mb-0">&copy; 2025 Failytail. Hak Cipta Dilindungi.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
-          <a href="#" class="hover:text-primary transition">Bantuan</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-</body>
+        </footer>
+    <?php endif; ?>
+    
+  </body>
 </html>

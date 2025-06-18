@@ -56,5 +56,5 @@ include '../view/layout/header.php';
     </div>
   </div>
 
-  <?php include 'footer-admin.php'; ?>
+  <?php include '../view/layout/footer.php'; ?>
 </div>

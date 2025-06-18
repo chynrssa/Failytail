@@ -48,5 +48,5 @@ include '../view/layout/header.php';
   </div>
 
   <!-- Footer tetap di bawah -->
-  <?php include 'footer-admin.php'; ?>
+  <?php include '../view/layout/footer.php'; ?>
 </div>

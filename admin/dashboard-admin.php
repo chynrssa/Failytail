@@ -43,6 +43,6 @@
     </div>
   </div>
 
-  <?php include 'footer-admin.php'; ?>
+  <?php include '../view/layout/footer.php'; ?>
 
 </div>

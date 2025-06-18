@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<?php include '../header-admin.php'; ?> <!-- gunakan path relatif dari folder 'crud/' -->
+<?php include '../view/layout/header.php'; ?> <!-- gunakan path relatif dari folder 'crud/' -->
 
 <div class="p-6">
   <h2 class="text-2xl font-bold mb-4">Tambah Film</h2>
@@ -38,4 +38,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </form>
 </div>
 
-<?php include '../footer-admin.php'; ?>
+<?php include '../view/layout/footer.php'; ?>
