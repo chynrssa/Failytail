@@ -16,7 +16,7 @@ $error = null;
 
 // Ambil data film berdasarkan ID
 if ($film_id) {
-    $stmt = $conn->prepare("SELECT * FROM film WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM filmadmin WHERE id = ?");
     $stmt->bind_param("i", $film_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($stmt->execute()) {
             // Redirect ke halaman ini kembali dengan parameter sukses dan film_id
-            header("Location: beri_ulasan.php?film_id=" . urlencode($film_id) . "&success=1");
+            header("Location: input_ulasan.php?film_id=" . urlencode($film_id) . "&success=1");
             exit;
         } else {
             $error = "Gagal menyimpan ulasan: " . $stmt->error;
@@ -95,9 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </form>
 
       <div class="text-center mt-6">
-        <a href="/FAILYTAIL/index.php" class="text-sm text-gray-500 hover:underline">&larr; Kembali ke Beranda</a>
+        <a href="/FAILYTAIL/admin/dashboard-admin.php" class="text-sm text-gray-500 hover:underline">&larr; Kembali ke Beranda</a>
       </div>
     </div>
   </div>
 </body>
 </html>
+
