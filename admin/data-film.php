@@ -48,6 +48,7 @@ include '../view/layout/header.php';
             <td class="px-4 py-3 space-x-3">
               <a href="crud/edit-film.php?id=<?= $row['id'] ?>" class="text-cyan-600 font-semibold hover:underline">Edit</a>
               <a href="crud/hapus-film.php?id=<?= $row['id'] ?>" onclick="return confirm('Yakin ingin menghapus film ini?');" class="text-red-600 font-semibold hover:underline">Hapus</a>
+              <a href="../pengguna/ulasan/input_ulasan.php?film_id=<?= $row['id'] ?>" class="text-blue-600 font-semibold hover:underline">Ulas</a>
             </td>
           </tr>
           <?php } ?>
