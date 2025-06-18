@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<?php include '../view/layout/header.php'; ?>
+<?php include '../../view/layout/header.php'; ?>
 
 <div class="p-6">
   <h2 class="text-2xl font-bold mb-4">Edit Film</h2>
@@ -49,4 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </form>
 </div>
 
-<?php include '../view/layout/footer.php'; ?>
+<?php include '../../view/layout/footer.php'; ?>
