@@ -712,36 +712,7 @@ include 'view/layout/header.php';
                     </div>
                   </div>
                 </div>
-                <!-- Pagination -->
-                <div class="flex justify-center mt-8">
-                  <div class="flex space-x-1">
-                    <button
-                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
-                    >
-                      <i class="ri-arrow-left-s-line"></i>
-                    </button>
-                    <button
-                      class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white"
-                    >
-                      1
-                    </button>
-                    <button
-                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
-                    >
-                      2
-                    </button>
-                    <button
-                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
-                    >
-                      3
-                    </button>
-                    <button
-                      class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
-                    >
-                      <i class="ri-arrow-right-s-line"></i>
-                    </button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

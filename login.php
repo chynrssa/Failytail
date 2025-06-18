@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // PERBAIKAN: Redirect sesuai role
             if ($_SESSION['role'] == 'admin') {
-                header("Location: /FAILYTAIL/admin/dashboard.php");
+                header("Location: /FAILYTAIL/admin/dashboard-admin.php");
             } else {
                 header("Location: /FAILYTAIL/index.php");
             }

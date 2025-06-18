@@ -108,6 +108,10 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`, `email`
 (1, 'admin', '$2y$10$Bq2bG0tX.6Qe8WzVJk8fE.9dY1rAaBbCcDdEeFfGgHhIiJjKkLlMmN', 'admin', '2025-05-26 06:36:10', NULL, NULL, NULL),
 (2, 'user', '$2y$10$lk0eeWVYTAIHIDFLxkYBUOPWE7H.IPM6eZvQMupL2CClJhulvsquO', 'user', '2025-05-26 13:52:22', NULL, NULL, NULL);
 
+
+UPDATE users 
+SET password = '$2y$10$Wvq0pQ2XZ3y6K9JbLcRdR.7aB4cD5eF6gH7iJ8kL9mN0oP1qR2sT3u' 
+WHERE username = 'admin';
 --
 -- Indexes for dumped tables
 --
