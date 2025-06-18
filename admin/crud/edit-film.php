@@ -1,39 +1,79 @@
 <?php
+// --- KONEKSI DATABASE ---
 $conn = new mysqli("localhost", "root", "", "failytail");
 if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
 }
 
+// Periksa apakah ID ada dan merupakan angka
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+  die("ID film tidak valid.");
+}
 $id = $_GET['id'];
-$sql = "SELECT * FROM filmadmin WHERE id = $id";
-$result = $conn->query($sql);
+
+// prepared statement untuk mengambil data, mencegah SQL Injection
+$sql = "SELECT id, poster, judul, genre, deskripsi FROM filmadmin WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id); // 'i' untuk integer
+$stmt->execute();
+$result = $stmt->get_result();
+
 if ($result->num_rows === 0) {
   die("Film tidak ditemukan.");
 }
+// Simpan data film lama ke dalam variabel
 $film = $result->fetch_assoc();
+$stmt->close();
 
+
+// --- PROSES FORM JIKA ADA SUBMIT (METHOD POST) ---
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $judul = $_POST["judul"];
   $genre = $_POST["genre"];
   $deskripsi = $_POST["deskripsi"];
+  $posterPath = $film['poster']; // Defaultnya, gunakan poster lama
 
-  if (!empty($_FILES["poster"]["name"])) {
+ 
+  // Periksa apakah pengguna mengupload file baru dan tidak ada error
+  if (isset($_FILES["poster"]) && $_FILES["poster"]["error"] == 0 && !empty($_FILES["poster"]["name"])) {
+    
+
+    $oldPosterServerPath = "../../" . substr($film['poster'], 3); // Konversi ../image/ -> ../../image/
+    if (file_exists($oldPosterServerPath)) {
+      unlink($oldPosterServerPath);
+    }
+    
+   
     $posterName = $_FILES["poster"]["name"];
     $posterTmp = $_FILES["poster"]["tmp_name"];
-    $posterDest = "../poster/" . $posterName;
-    move_uploaded_file($posterTmp, $posterDest);
-  } else {
-    $posterDest = $film['poster'];
-  }
+    
+    // Path tujuan untuk MENYIMPAN file di server
+    $uploadDestination = "../../image/posters/" . basename($posterName);
+    
+    // Path yang akan DISIMPAN KE DATABASE
+    $databasePath = "../image/posters/" . basename($posterName);
 
-  $updateSql = "UPDATE filmadmin SET poster='$posterDest', judul='$judul', genre='$genre', deskripsi='$deskripsi' WHERE id=$id";
-  if ($conn->query($updateSql) === TRUE) {
+    if (move_uploaded_file($posterTmp, $uploadDestination)) {
+      $posterPath = $databasePath; // Jika upload berhasil, gunakan path gambar baru
+    }
+  }
+  // Jika tidak ada file baru yang diupload, $posterPath akan tetap berisi path gambar lama.
+
+  // --- UPDATE DATA KE DATABASE (SUDAH AMAN) ---
+  $updateSql = "UPDATE filmadmin SET poster=?, judul=?, genre=?, deskripsi=? WHERE id=?";
+  $stmt = $conn->prepare($updateSql);
+  // 'ssssi' -> 4 string (poster, judul, genre, deskripsi) dan 1 integer (id)
+  $stmt->bind_param("ssssi", $posterPath, $judul, $genre, $deskripsi, $id);
+
+  if ($stmt->execute()) {
     header("Location: ../data-film.php");
     exit();
   } else {
-    echo "Gagal mengedit film: " . $conn->error;
+    echo "Gagal mengedit film: " . $stmt->error;
   }
+  $stmt->close();
 }
+$conn->close();
 ?>
 
 <?php include '../../view/layout/header.php'; ?>
