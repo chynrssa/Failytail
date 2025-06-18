@@ -105,6 +105,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`, `email`
 (1, 'admin', '$2y$10$ZFFWhePTaUpxhIe3CIXG2OqL3W938q2DkTy4ULsCdIsUFbev2i5re', 'user', '2025-05-26 06:36:10', NULL, NULL),
 (2, 'user', '$2y$10$lk0eeWVYTAIHIDFLxkYBUOPWE7H.IPM6eZvQMupL2CClJhulvsquO', 'user', '2025-05-26 13:52:22', NULL, NULL);
 
+ALTER TABLE users ADD COLUMN alamat TEXT DEFAULT NULL AFTER phone;
 --
 -- Indexes for dumped tables
 --
