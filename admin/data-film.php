@@ -5,7 +5,7 @@ if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
 }
 
-include 'header-admin.php';
+include '../view/layout/header.php';
 ?>
 
 <!-- Bungkus seluruh isi dengan div flex column -->

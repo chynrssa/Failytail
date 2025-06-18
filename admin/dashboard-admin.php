@@ -1,4 +1,4 @@
-<?php include 'header-admin.php'; ?>
+<?php include '../view/layout/header.php'; ?>
 
 <div class="min-h-screen flex flex-col">
 
