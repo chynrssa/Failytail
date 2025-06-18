@@ -1,5 +1,16 @@
 <?php
 include 'view/layout/header.php';
+
+// 1. Koneksi ke database
+$conn = new mysqli("localhost", "root", "", "failytail");
+if ($conn->connect_error) {
+  die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// 2. Query untuk mengambil semua data film, diurutkan dari yang terbaru
+$sql = "SELECT id, poster, judul, genre, deskripsi FROM filmadmin ORDER BY id DESC";
+$result = $conn->query($sql);
+
 ?>
 <section class="bg-white py-1">
   <!-- Gambar dan Teks -->
@@ -37,7 +48,7 @@ include 'view/layout/header.php';
     <!-- Film Categories -->
     <section class="py-8 bg-gray-50">
       <div class="container mx-auto px-4 mb-6">
-          <div class="relative w-full max-w-[50%] mx-auto"> <!-- HANYA 50% dari lebar gambar -->
+          <div class="relative w-full max-w-[50%] mx-auto"> 
             <input
               type="text"
               placeholder="Cari film, ulasan, atau pengguna..."
@@ -103,163 +114,52 @@ include 'view/layout/header.php';
             Thriller
           </button>
         </div>
-        <!-- Films Grid -->
-        <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
-        >
-          <!-- Film 1 -->
-          <div
-            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <div class="relative">
-              <img
-                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20inception%2C%20dream%20within%20dreams%20concept%2C%20professional%20movie%20poster%20style%2C%20dark%20blue%20tones&width=300&height=450&seq=2&orientation=portrait"
-                alt="Inception"
-                class="w-full h-60 object-cover"
-              />
-              <div
-                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
-              >
-                9.2
-              </div>
-            </div>
-            <div class="p-3">
-              <h3 class="font-semibold text-gray-800 mb-1">Inception</h3>
-              <div class="flex items-center text-yellow-500 text-xs mb-1">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-half-fill"></i>
-                <span class="text-gray-500 ml-1">(128)</span>
-              </div>
-              <p class="text-xs text-gray-500">
-                Mimpi dalam mimpi dalam mimpi...
-              </p>
-            </div>
-          </div>
-          <!-- Film 2 -->
-          <div
-            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <div class="relative">
-              <img
-                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20evangelion%203.0%2C%20anime%20style%2C%20professional%20movie%20poster%2C%20dark%20tones%20with%20white%20and%20red%20accents&width=300&height=450&seq=3&orientation=portrait"
-                alt="Evangelion 3.0"
-                class="w-full h-60 object-cover"
-              />
-              <div
-                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
-              >
-                8.7
-              </div>
-            </div>
-            <div class="p-3">
-              <h3 class="font-semibold text-gray-800 mb-1">Evangelion 3.0</h3>
-              <div class="flex items-center text-yellow-500 text-xs mb-1">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-line"></i>
-                <span class="text-gray-500 ml-1">(95)</span>
-              </div>
-              <p class="text-xs text-gray-500">
-                Keanu Reeves: Bringing You Good Fortune
-              </p>
-            </div>
-          </div>
-          <!-- Film 3 -->
-          <div
-            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <div class="relative">
-              <img
-                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20oppenheimer%2C%20dramatic%20portrait%20with%20fire%20and%20explosion%20elements%2C%20professional%20movie%20poster%20style%2C%20orange%20and%20red%20tones&width=300&height=450&seq=4&orientation=portrait"
-                alt="Oppenheimer"
-                class="w-full h-60 object-cover"
-              />
-              <div
-                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
-              >
-                9.5
-              </div>
-            </div>
-            <div class="p-3">
-              <h3 class="font-semibold text-gray-800 mb-1">Oppenheimer</h3>
-              <div class="flex items-center text-yellow-500 text-xs mb-1">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <span class="text-gray-500 ml-1">(210)</span>
-              </div>
-              <p class="text-xs text-gray-500">
-                Mala Kealoha: Best Interview Ever
-              </p>
-            </div>
-          </div>
-          <!-- Film 4 -->
-          <div
-            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <div class="relative">
-              <img
-                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20perfect%20blue%2C%20anime%20style%2C%20psychological%20thriller%2C%20professional%20movie%20poster%2C%20blue%20tones&width=300&height=450&seq=5&orientation=portrait"
-                alt="Perfect Blue"
-                class="w-full h-60 object-cover"
-              />
-              <div
-                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
-              >
-                8.9
-              </div>
-            </div>
-            <div class="p-3">
-              <h3 class="font-semibold text-gray-800 mb-1">Perfect Blue</h3>
-              <div class="flex items-center text-yellow-500 text-xs mb-1">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-half-fill"></i>
-                <span class="text-gray-500 ml-1">(87)</span>
-              </div>
-              <p class="text-xs text-gray-500">Lilo & Stitch: Meet the Stars</p>
-            </div>
-          </div>
-          <!-- Film 5 -->
-          <div
-            class="film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <div class="relative">
-              <img
-                src="https://readdy.ai/api/search-image?query=cinematic%20movie%20poster%20for%20the%20martian%2C%20mars%20landscape%2C%20astronaut%2C%20professional%20movie%20poster%20style%2C%20red%20tones&width=300&height=450&seq=6&orientation=portrait"
-                alt="The Martian"
-                class="w-full h-60 object-cover"
-              />
-              <div
-                class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
-              >
-                9.0
-              </div>
-            </div>
-            <div class="p-3">
-              <h3 class="font-semibold text-gray-800 mb-1">The Martian</h3>
-              <div class="flex items-center text-yellow-500 text-xs mb-1">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-half-fill"></i>
-                <span class="text-gray-500 ml-1">(156)</span>
-              </div>
-              <p class="text-xs text-gray-500">Survival on Mars</p>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+  
+  <?php
+  // Periksa apakah ada data film yang ditemukan
+  if ($result->num_rows > 0) {
+    // Loop untuk setiap baris data film
+    while ($film = $result->fetch_assoc()) {
+      
+      // Perbaikan path gambar untuk halaman index.php
+      // Menghapus '../' dari path yang disimpan di database
+      $posterPath = str_replace('../', '', $film['poster']);
+  ?>
+  
+     <a href="pengguna/film/detail-film.php?id=<?= $film['id'] ?>" class="block film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+  <div class="relative">
+      <img 
+        src="<?= htmlspecialchars($posterPath) ?>" 
+        alt="<?= htmlspecialchars($film['judul']) ?>" 
+        class="w-full h-60 object-cover" 
+      />
+    <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">
+      N/A
+    </div>
+  </div>
+  <div class="p-3">
+    <h3 class="font-semibold text-gray-800 mb-1 truncate">
+      <?= htmlspecialchars($film['judul']) ?>
+    </h3>
+    <p class="text-xs text-gray-500 truncate">
+      <?= htmlspecialchars($film['deskripsi']) ?>
+    </p>
+  </div>
+</a>
+  
+  <?php
+    } // Akhir dari loop while
+  } else {
+    // Tampilkan pesan jika tidak ada film
+    echo "<p class='col-span-full text-center text-gray-500'>Belum ada film yang ditambahkan.</p>";
+  }
+  // Tutup koneksi setelah selesai
+  $conn->close();
+  ?>
+  
+</div>
+        
     </section>
     <!-- Popular Reviews -->
     <section class="py-8 bg-white">
