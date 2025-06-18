@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Gunakan prepared statement untuk keamanan
     $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -15,15 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         
-        // Verifikasi password dengan password_verify()
+        // PERBAIKAN: Gunakan password_verify() untuk membandingkan hash
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $row['id'];
 
-            if ($row['role'] == 'admin') {
-                header("Location: /FAILYTAIL/admin/dashboard.html");
+            // PERBAIKAN: Redirect sesuai role
+            if ($_SESSION['role'] == 'admin') {
+                header("Location: /FAILYTAIL/admin/dashboard.php");
             } else {
                 header("Location: /FAILYTAIL/index.php");
             }
@@ -139,7 +139,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <div class="mt-6 text-center text-sm text-gray-600">
         <p class="mb-2">Belum punya akun? <a href="register.php" class="text-[#00bfe7] font-semibold hover:underline">Daftar Sekarang</a></p>
-        </div>
       </div>
     </div>
   </div>
