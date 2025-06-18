@@ -116,7 +116,7 @@ $role = $is_logged_in ? $_SESSION['role'] : 'user';
       <div class="text-right text-black font-semibold leading-tight">
         Hai,<br><span class="font-bold"><?= htmlspecialchars($username) ?></span>
       </div>
-      <a href="/FAILYTAIL/pengguna/logout.php" class="bg-white text-cyan-500 font-semibold px-4 py-1 rounded-lg hover:bg-gray-100 transition">
+      <a href="/FAILYTAIL/logout.php" class="bg-white text-cyan-500 font-semibold px-4 py-1 rounded-lg hover:bg-gray-100 transition">
         Logout
       </a>
     </div>
@@ -153,7 +153,7 @@ $role = $is_logged_in ? $_SESSION['role'] : 'user';
             <span class="text-black font-semibold text-sm shadow-sm">
               Hai, <?= htmlspecialchars($username) ?>
             </span>
-            <a href="/FAILYTAIL/pengguna/logout.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
+            <a href="/FAILYTAIL/logout.php" class="bg-white text-primary px-5 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">
               Logout
             </a>
           <?php else: ?>

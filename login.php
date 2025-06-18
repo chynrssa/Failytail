@@ -14,14 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         
-        // PERBAIKAN: Gunakan password_verify() untuk membandingkan hash
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $row['id'];
 
-            // PERBAIKAN: Redirect sesuai role
             if ($_SESSION['role'] == 'admin') {
                 header("Location: /FAILYTAIL/admin/dashboard-admin.php");
             } else {
