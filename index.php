@@ -7,9 +7,47 @@ if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// 2. Query untuk mengambil semua data film, diurutkan dari yang terbaru
-$sql = "SELECT id, poster, judul, genre, deskripsi FROM filmadmin ORDER BY id DESC";
-$result = $conn->query($sql);
+$selected_genre = isset($_GET['genre']) ? $_GET['genre'] : '';
+$search_query = isset($_GET['search']) ? $_GET['search'] : '';
+
+$sql = "SELECT 
+            filmadmin.id, 
+            filmadmin.poster, 
+            filmadmin.judul, 
+            filmadmin.genre, 
+            filmadmin.deskripsi,
+            AVG(ulasan.rating) as avg_rating
+        FROM filmadmin 
+        LEFT JOIN ulasan ON filmadmin.id = ulasan.film_id";
+
+$where_clauses = [];
+$params = [];
+$types = '';
+
+if (!empty($selected_genre) && $selected_genre !== 'Semua') {
+    $where_clauses[] = "filmadmin.genre LIKE ?";
+    $params[] = "%" . $selected_genre . "%";
+    $types .= 's';
+}
+
+if (!empty($search_query)) {
+    $where_clauses[] = "LOWER(filmadmin.judul) LIKE ?";
+    $params[] = "%" . strtolower($search_query) . "%";
+    $types .= 's';
+}
+
+if (!empty($where_clauses)) {
+    $sql .= " WHERE " . implode(" AND ", $where_clauses);
+}
+
+$sql .= " GROUP BY filmadmin.id ORDER BY filmadmin.id DESC";
+
+$stmt = $conn->prepare($sql);
+if (!empty($params)) {
+    $stmt->bind_param($types, ...$params);
+}
+$stmt->execute();
+$result = $stmt->get_result();
 
 ?>
 <section class="bg-white py-1">
@@ -46,120 +84,69 @@ $result = $conn->query($sql);
 
 
     <!-- Film Categories -->
-    <section class="py-8 bg-gray-50">
-      <div class="container mx-auto px-4 mb-6">
-          <div class="relative w-full max-w-[50%] mx-auto"> 
-            <input
-              type="text"
-              placeholder="Cari film, ulasan, atau pengguna..."
-              class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md"
-            />
-            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-              <i class="ri-search-line text-base"></i>
-            </div>
-          </div>
-      </div>
+     <section class="py-8 bg-gray-50">
+       <div class="container mx-auto px-4 mb-6">
+      <form action="index.php#film-categories" method="GET" class="relative w-full max-w-[50%] mx-auto">
+        <input type="text" name="search" placeholder="Cari film berdasarkan judul..." value="<?= htmlspecialchars($search_query) ?>" class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-primary"/>
+        <?php if (!empty($selected_genre)): ?>
+            <input type="hidden" name="genre" value="<?= htmlspecialchars($selected_genre) ?>">
+        <?php endif; ?>
+        <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+          <i class="ri-search-line text-base"></i>
+        </button>
+      </form>
+  </div>
       
       <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-800">Kategori Film</h2>
-          <a
-            href="#"
-            class="text-primary font-medium text-sm flex items-center"
-          >
-            Lihat Semua
-            <i class="ri-arrow-right-line ml-1"></i>
-          </a>
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Kategori Film</h2>
+      <a href="index.php#film-categories" class="text-primary font-medium text-sm flex items-center">Lihat Semua<i class="ri-arrow-right-line ml-1"></i></a>
+    </div>
+    
+    <div class="flex overflow-x-auto whitespace-nowrap mb-6 pb-2">
+      <?php
+        $categories = ['Semua', 'Action', 'Drama', 'Comedy', 'Horror', 'Sci-Fi', 'Romance', 'Thriller'];
+        foreach ($categories as $category) {
+            $is_active = (empty($selected_genre) && $category === 'Semua') || ($selected_genre === $category);
+            $active_class = $is_active ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100';
+            $url_genre = ($category === 'Semua') ? '' : $category;
+            echo "<a href='index.php?genre=$url_genre#film-categories' class='$active_class px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap transition-colors duration-300'>$category</a>";
+        }
+      ?>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+      <?php
+      if ($result->num_rows > 0) {
+        while ($film = $result->fetch_assoc()) {
+          $posterPath = str_replace('../', '', $film['poster']);
+      ?>
+      <a href="pengguna/film/detail-film.php?id=<?= $film['id'] ?>" class="block film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <div class="relative">
+            <img src="<?= htmlspecialchars($posterPath) ?>" alt="<?= htmlspecialchars($film['judul']) ?>" class="w-full h-60 object-cover" />
+          <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+            <i class="ri-star-fill"></i>
+            <span>
+              <?= !empty($film['avg_rating']) ? number_format($film['avg_rating'], 1) : 'N/A' ?>
+            </span>
+          </div>
         </div>
-        <!-- Category Tabs -->
-        <div class="flex overflow-x-auto whitespace-nowrap mb-6 pb-2">
-          <button
-            class="bg-primary text-white px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap"
-          >
-            Semua
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Action
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Drama
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Comedy
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Horror
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Sci-Fi
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm mr-3 whitespace-nowrap hover:bg-gray-100"
-          >
-            Romance
-          </button>
-          <button
-            class="bg-white text-gray-700 px-5 py-2 rounded-full text-sm whitespace-nowrap hover:bg-gray-100"
-          >
-            Thriller
-          </button>
+        <div class="p-3">
+          <h3 class="font-semibold text-gray-800 mb-1 truncate"><?= htmlspecialchars($film['judul']) ?></h3>
+          <p class="text-xs text-gray-500 truncate"><?= htmlspecialchars($film['deskripsi']) ?></p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-  
-  <?php
-  // Periksa apakah ada data film yang ditemukan
-  if ($result->num_rows > 0) {
-    // Loop untuk setiap baris data film
-    while ($film = $result->fetch_assoc()) {
-      
-      // Perbaikan path gambar untuk halaman index.php
-      // Menghapus '../' dari path yang disimpan di database
-      $posterPath = str_replace('../', '', $film['poster']);
-  ?>
-  
-     <a href="pengguna/film/detail-film.php?id=<?= $film['id'] ?>" class="block film-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-  <div class="relative">
-      <img 
-        src="<?= htmlspecialchars($posterPath) ?>" 
-        alt="<?= htmlspecialchars($film['judul']) ?>" 
-        class="w-full h-60 object-cover" 
-      />
-    <div class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">
-      N/A
+      </a>
+      <?php
+        }
+      } else {
+        echo "<p class='col-span-full text-center text-gray-500'>Tidak ada film yang cocok dengan kriteria Anda.</p>";
+      }
+      $stmt->close();
+      $conn->close();
+      ?>
     </div>
   </div>
-  <div class="p-3">
-    <h3 class="font-semibold text-gray-800 mb-1 truncate">
-      <?= htmlspecialchars($film['judul']) ?>
-    </h3>
-    <p class="text-xs text-gray-500 truncate">
-      <?= htmlspecialchars($film['deskripsi']) ?>
-    </p>
-  </div>
-</a>
-  
-  <?php
-    } // Akhir dari loop while
-  } else {
-    // Tampilkan pesan jika tidak ada film
-    echo "<p class='col-span-full text-center text-gray-500'>Belum ada film yang ditambahkan.</p>";
-  }
-  // Tutup koneksi setelah selesai
-  $conn->close();
-  ?>
-  
-</div>
-        
+          
     </section>
     <!-- Popular Reviews -->
     <section class="py-8 bg-white">
