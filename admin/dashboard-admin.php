@@ -1,4 +1,29 @@
-<?php include '../view/layout/header.php'; ?>
+<?php
+// Koneksi ke database
+$conn = new mysqli("localhost", "root", "", "failytail");
+if ($conn->connect_error) {
+  die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// 1. menghitung jumlah film dari tabel filmadmin
+$sql_film = "SELECT COUNT(id) as total_film FROM filmadmin";
+$result_film = $conn->query($sql_film);
+$total_film = $result_film->fetch_assoc()['total_film'];
+
+// 2. menghitung jumlah rating (ulasan) dari tabel ulasan
+$sql_rating = "SELECT COUNT(id) as total_rating FROM ulasan";
+$result_rating = $conn->query($sql_rating);
+$total_rating = $result_rating->fetch_assoc()['total_rating'];
+
+// 3.menghitung jumlah pengguna dari tabel users
+$sql_pengguna = "SELECT COUNT(id) as total_pengguna FROM users";
+$result_pengguna = $conn->query($sql_pengguna);
+$total_pengguna = $result_pengguna->fetch_assoc()['total_pengguna'];
+
+// Menutup koneksi setelah selesai
+$conn->close();
+
+include '../view/layout/header.php'; ?>
 
 <div class="min-h-screen flex flex-col">
 
@@ -13,7 +38,7 @@
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-lg font-semibold text-gray-600 mb-1">Jumlah Film</h2>
-            <p class="text-4xl font-bold text-cyan-600">25</p>
+            <p class="text-4xl font-bold text-cyan-600"><?php echo $total_film; ?></p>
           </div>
           <div class="text-cyan-500 text-4xl">🎬</div>
         </div>
@@ -24,7 +49,7 @@
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-lg font-semibold text-gray-600 mb-1">Total Rating</h2>
-            <p class="text-4xl font-bold text-cyan-600">150</p>
+            <p class="text-4xl font-bold text-cyan-600"><?php echo $total_rating; ?></p>
           </div>
           <div class="text-cyan-500 text-4xl">⭐</div>
         </div>
@@ -35,7 +60,7 @@
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-lg font-semibold text-gray-600 mb-1">Jumlah Pengguna</h2>
-            <p class="text-4xl font-bold text-cyan-600">85</p>
+            <p class="text-4xl font-bold text-cyan-600"><?php echo $total_pengguna; ?></p>
           </div>
           <div class="text-cyan-500 text-4xl">👤</div>
         </div>
