@@ -26,22 +26,38 @@ include '../view/layout/header.php';
             <th class="border p-2">Aksi</th>
           </tr>
         </thead>
-        <tbody class="bg-white">
-          <tr>
-            <td class="border p-2">1</td>
-            <td class="border p-2">Contoh Film</td>
-            <td class="border p-2">user123</td>
-            <td class="border p-2">4.5</td>
-            <td class="border p-2">Bagus banget!</td>
-            <td class="border p-2 text-center">
-              <a href="hapus-rating.php?id=1" 
-                 onclick="return confirm('Yakin ingin menghapus rating ini?')" 
-                 class="inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">
-                 Hapus
-              </a>
-            </td>
-          </tr>
-          <!-- Tambahkan baris rating lainnya di sini -->
+         <tbody class="bg-white">
+          <?php
+          // PERBAIKAN: Query diubah untuk JOIN ke tabel `filmadmin` sesuai struktur database baru
+          $sql = "SELECT ulasan.id, filmadmin.judul AS nama_film, users.username AS nama_pengguna, ulasan.rating, ulasan.komentar 
+                  FROM ulasan
+                  JOIN filmadmin ON ulasan.film_id = filmadmin.id
+                  JOIN users ON ulasan.user_id = users.id
+                  ORDER BY ulasan.id DESC"; // Diurutkan agar data terbaru di atas
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+            // Menampilkan data untuk setiap baris
+            while($row = $result->fetch_assoc()) {
+              echo "<tr class='hover:bg-gray-50'>";
+              echo "<td class='border p-2'>" . $row["id"] . "</td>";
+              echo "<td class='border p-2'>" . htmlspecialchars($row["nama_film"]) . "</td>";
+              echo "<td class='border p-2'>" . htmlspecialchars($row["nama_pengguna"]) . "</td>";
+              echo "<td class='border p-2'>" . htmlspecialchars($row["rating"]) . "</td>";
+              echo "<td class='border p-2'>" . htmlspecialchars($row["komentar"]) . "</td>";
+              echo "<td class='border p-2 text-center'>";
+              echo "<a href='hapus-rating.php?id=" . $row["id"] . "' 
+                       onclick=\"return confirm('Yakin ingin menghapus rating ini?')\" 
+                       class='inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700'>
+                       Hapus
+                    </a>";
+              echo "</td>";
+              echo "</tr>";
+            }
+          } else {
+            echo "<tr><td colspan='6' class='border p-2 text-center'>Belum ada data rating.</td></tr>";
+          }
+          ?>
         </tbody>
       </table>
     </div>
