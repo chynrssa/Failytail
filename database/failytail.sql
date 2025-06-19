@@ -62,10 +62,11 @@ CREATE TABLE `filmadmin` (
 --
 
 INSERT INTO `filmadmin` (`id`, `poster`, `judul`, `genre`, `deskripsi`) VALUES
-(2, '../poster/ttd.jpg', 'Flying Dutchman ', 'Horror', 'spongebobbbb'),
-(3, '../poster/ttd.jpg', 'Oppenheimer', 'action', 'deksripsi singkat'),
-(4, '../poster/wa.jpg', 'Perfect Blue', 'Drama', 'apayaa');
-
+(2, '../image/posters/Kowaru Neon Genesis Evangelion Wallpaper.jpg', 'Neon Genesis Evangelion', 'Horror', 'spongebobbbb'),
+(3, '../image/posters/oppenheimer.jpg', 'Oppenheimer', 'Drama', 'deksripsi singkat'),
+(4, '../image/posters/Perfect blue (1997) [691x1024].jpg', 'Perfect Blue', 'Drama', 'apayaa'),
+(6, '../image/posters/Akira.jpeg', 'Akira', 'Action', 'Akira seorang ngabers'),
+(7, '../image/posters/the wind rises.jpeg', 'The Wind Rises', 'Romance', 'Seorang yang jatuh cinta');
 -- --------------------------------------------------------
 
 --
@@ -77,7 +78,7 @@ CREATE TABLE `ulasan` (
   `user_id` int NOT NULL,
   `film_id` int NOT NULL,
   `komentar` text NOT NULL,
-  `rating` float DEFAULT NULL,
+  `rating` decimal(2,1) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -86,7 +87,14 @@ CREATE TABLE `ulasan` (
 --
 
 INSERT INTO `ulasan` (`id`, `user_id`, `film_id`, `komentar`, `rating`, `created_at`) VALUES
-(1, 3, 3, 'bagus', 9.7, '2025-06-19 02:37:01');
+(2, 3, 7, 'Ini film ghibli paling romatis', 9.5, '2025-06-18 09:52:24'),
+(3, 3, 6, 'Keren banget action dari akira', 9.2, '2025-06-18 09:56:03'),
+(4, 4, 7, 'BAGUS BANGET NJIR', 9.2, '2025-06-18 10:17:07'),
+(5, 4, 6, 'Gelo dunia nya keren', 9.0, '2025-06-18 10:21:16'),
+(6, 3, 4, 'Serem banget, kasian mc nya', 9.2, '2025-06-18 10:22:52'),
+(7, 4, 4, 'Duh ga kebayang', 9.0, '2025-06-18 10:23:21'),
+(8, 4, 2, 'Gokil ini film ke tiga nya', 9.0, '2025-06-19 12:46:05'),
+(9, 3, 2, 'Gelo shinjiii', 9.1, '2025-06-19 12:47:04');
 
 -- --------------------------------------------------------
 
@@ -112,7 +120,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`, `email`, `phone`, `alamat`) VALUES
 (1, 'admin', '$2y$10$ZFFWhePTaUpxhIe3CIXG2OqL3W938q2DkTy4ULsCdIsUFbev2i5re', 'admin', '2025-05-26 06:36:10', NULL, NULL, NULL),
 (2, 'user', '$2y$10$lk0eeWVYTAIHIDFLxkYBUOPWE7H.IPM6eZvQMupL2CClJhulvsquO', 'user', '2025-05-26 13:52:22', NULL, NULL, NULL),
-(3, 'zidan', '$2y$10$OOOSIoxcBntfGrJ/DhoRBujUZIgELpWCTGWw8RUSRAWCStD99nKy6', 'user', '2025-06-19 02:36:26', 'zidan@gmail.com', '1234567890', 'rumah');
+(3, 'zane', '$2y$10$0qyJhnQEwPipbcGPsswXLeSSdzyC.tWgKD8NgTZD3UA/J2eSIpw/G', 'admin', '2025-06-18 05:44:46', 'akbar.lamborgini@gmail.com', '081573049831', 'Jalan Kebersihan Gang Nurul Hidayah No 45'),
+(4, 'ilham', '$2y$10$OBO0MYpVZ.dNl0tpwMtoK.Y2UqfctvslSGYS3ySkENSa38MQoWSCy', 'user', '2025-06-18 06:14:07', 'nickle.ferum1135@gmail.com', '0872329840', 'Jalan Nasi Padang');
 
 --
 -- Indexes for dumped tables
@@ -181,8 +190,8 @@ ALTER TABLE `users`
 -- Constraints for table `ulasan`
 --
 ALTER TABLE `ulasan`
-  ADD CONSTRAINT `ulasan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `ulasan_ibfk_2` FOREIGN KEY (`film_id`) REFERENCES `film` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_ulasan_filmadmin` FOREIGN KEY (`film_id`) REFERENCES `filmadmin` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ulasan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
