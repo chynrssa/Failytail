@@ -25,19 +25,31 @@ include '../view/layout/header.php';
           </tr>
         </thead>
         <tbody class="bg-white">
-          <tr class="hover:bg-gray-50">
-            <td class="border p-2">1</td>
-            <td class="border p-2">user123</td>
-            <td class="border p-2">2025-06-17</td>
-            <td class="border p-2 text-center">
-              <a href="hapus-pengguna.php?id=1" 
-                 onclick="return confirm('Yakin ingin menghapus pengguna ini?')"
-                 class="inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">
-                Hapus
-              </a>
-            </td>
-          </tr>
+          <?php
+          // Query untuk mengambil semua data dari tabel users
+          $sql = "SELECT id, username, created_at FROM users";
+          $result = $conn->query($sql);
 
+          if ($result->num_rows > 0) {
+            // Menampilkan data untuk setiap baris
+            while($row = $result->fetch_assoc()) {
+              echo "<tr class='hover:bg-gray-50'>";
+              echo "<td class='border p-2'>" . $row["id"] . "</td>";
+              echo "<td class='border p-2'>" . htmlspecialchars($row["username"]) . "</td>";
+              echo "<td class='border p-2'>" . date('Y-m-d', strtotime($row["created_at"])) . "</td>";
+              echo "<td class='border p-2 text-center'>";
+              echo "<a href='hapus-pengguna.php?id=" . $row["id"] . "' 
+                       onclick=\"return confirm('Yakin ingin menghapus pengguna ini?')\"
+                       class='inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700'>
+                      Hapus
+                    </a>";
+              echo "</td>";
+              echo "</tr>";
+            }
+          } else {
+            echo "<tr><td colspan='4' class='border p-2 text-center'>Tidak ada data pengguna.</td></tr>";
+          }
+          ?>
         </tbody>
       </table>
     </div>
