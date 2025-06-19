@@ -400,20 +400,7 @@ $result = $conn->query($sql);
                   <h2 class="text-xl font-bold text-gray-800">
                     Ulasan Penonton
                   </h2>
-                  <div class="flex items-center space-x-3">
-                    <button
-                      class="flex items-center text-sm text-gray-600 hover:text-primary"
-                    >
-                      <i class="ri-filter-3-line mr-1"></i>
-                      <span>Filter</span>
-                    </button>
-                    <button
-                      class="flex items-center text-sm text-gray-600 hover:text-primary"
-                    >
-                      <i class="ri-sort-desc-line mr-1"></i>
-                      <span>Terbaru</span>
-                    </button>
-                  </div>
+                 
                 </div>
                 <!-- Write Review -->
                 <div class="bg-gray-50 rounded-xl p-4 mb-6">
@@ -442,10 +429,7 @@ $result = $conn->query($sql);
                   ></textarea>
                   <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                      <input type="checkbox" id="spoiler" class="mr-2" />
-                      <label for="spoiler" class="text-sm text-gray-600"
-                        >Mengandung spoiler</label
-                      >
+                      
                     </div>
                     <button
                       class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-opacity-90 transition"
