@@ -5,17 +5,16 @@ if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// 1. menghitung jumlah film dari tabel filmadmin
+
 $sql_film = "SELECT COUNT(id) as total_film FROM filmadmin";
 $result_film = $conn->query($sql_film);
 $total_film = $result_film->fetch_assoc()['total_film'];
 
-// 2. menghitung jumlah rating (ulasan) dari tabel ulasan
+
 $sql_rating = "SELECT COUNT(id) as total_rating FROM ulasan";
 $result_rating = $conn->query($sql_rating);
 $total_rating = $result_rating->fetch_assoc()['total_rating'];
 
-// 3.menghitung jumlah pengguna dari tabel users
 $sql_pengguna = "SELECT COUNT(id) as total_pengguna FROM users";
 $result_pengguna = $conn->query($sql_pengguna);
 $total_pengguna = $result_pengguna->fetch_assoc()['total_pengguna'];
