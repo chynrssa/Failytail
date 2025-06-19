@@ -134,29 +134,36 @@
     <details class="faq-item">
       <summary><span class="faq-question">Apa itu Failytail?</span></summary>
       <div class="faq-answer">
-        Ini adalah platform berbagi informasi dan ulasan film, tempat Anda bisa membaca sinopsis, memberikan rating, serta membagikan pengalaman menonton Anda kepada pengguna lain.
+        <p>Failytail adalah platform komunitas tempat pengguna dapat berbagi pengalaman dan ulasan pribadi setelah menonton film. Kami menyediakan ruang untuk mengekspresikan perasaan, kesan, dan pandangan tentang film secara jujur dan personal.</p>
       </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah ini situs resmi dari studio film?</span></summary>
+      <summary><span class="faq-question">Apakah Failytail gratis?</span></summary>
       <div class="faq-answer">
-        Bukan. Website ini adalah platform independen yang dibuat oleh pecinta film untuk sesama penonton film.
+          <p>Ya, Failytail sepenuhnya gratis untuk digunakan. Anda dapat membaca ulasan, menulis pengalaman menonton film, dan berinteraksi dengan pengguna lain tanpa biaya.</p>
       </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah informasi film di sini selalu diperbarui?</span></summary>
+      <summary><span class="faq-question">Bagaimana cara menggunakan Failytail?</span></summary>
       <div class="faq-answer">
-        Ya, kami rutin memperbarui database dengan informasi terbaru seperti judul film, poster, sinopsis, genre, pemeran, dan tanggal tayang.
-      </div>
+                        <p>Untuk mulai menggunakan Failytail:</p>
+                        <ol>
+                            <li>Daftar akun gratis</li>
+                            <li>Jelajahi film berdasarkan kategori atau pencarian</li>
+                            <li>Baca ulasan dari penonton lain</li>
+                            <li>Bagikan pengalaman Anda setelah menonton film</li>
+                            <li>Berikan rating dan komentar pada ulasan pengguna lain</li>
+                        </ol>
+                    </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah saya bisa mengakses situs ini secara gratis?</span></summary>
+      <summary><span class="faq-question">Bagaimana cara menghubungi tim dukungan?</span></summary>
       <div class="faq-answer">
-        Ya. Semua fitur utama seperti membaca ulasan, memberikan rating, dan menulis pengalaman dapat digunakan secara gratis.
-      </div>
+                        <p>Anda dapat menghubungi tim dukungan kami melalui email di support@failytail.com atau melalui formulir kontak di bagian bawah halaman ini. Kami biasanya merespons dalam 1-2 hari kerja.</p>
+                    </div>
     </details>
   </div>
 

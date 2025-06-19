@@ -132,30 +132,23 @@
 
   <div class="faq-box">
     <details class="faq-item">
-      <summary><span class="faq-question">Apa itu Failytail?</span></summary>
+      <summary><span class="faq-question">Bagaimana cara menggunakan fitur pencarian?</span></summary>
       <div class="faq-answer">
-        Ini adalah platform berbagi informasi dan ulasan film, tempat Anda bisa membaca sinopsis, memberikan rating, serta membagikan pengalaman menonton Anda kepada pengguna lain.
-      </div>
+                        <p>Untuk mencari film atau ulasan:</p>
+                        <ol>
+                            <li>Gunakan kotak pencarian di bagian atas halaman</li>
+                            <li>Ketik judul film, genre, atau kata kunci</li>
+                            <li>Hasil akan muncul saat Anda mengetik</li>
+                            <li>Anda bisa menyaring hasil berdasarkan kategori</li>
+                            <li>Klik pada hasil yang relevan untuk membuka detail</li>
+                        </ol>
+                    </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah ini situs resmi dari studio film?</span></summary>
+      <summary><span class="faq-question">Apakah ada fitur untuk berinteraksi dengan pengguna lain?</span></summary>
       <div class="faq-answer">
-        Bukan. Website ini adalah platform independen yang dibuat oleh pecinta film untuk sesama penonton film.
-      </div>
-    </details>
-
-    <details class="faq-item">
-      <summary><span class="faq-question">Apakah informasi film di sini selalu diperbarui?</span></summary>
-      <div class="faq-answer">
-        Ya, kami rutin memperbarui database dengan informasi terbaru seperti judul film, poster, sinopsis, genre, pemeran, dan tanggal tayang.
-      </div>
-    </details>
-
-    <details class="faq-item">
-      <summary><span class="faq-question">Apakah saya bisa mengakses situs ini secara gratis?</span></summary>
-      <div class="faq-answer">
-        Ya. Semua fitur utama seperti membaca ulasan, memberikan rating, dan menulis pengalaman dapat digunakan secara gratis.
+        Tidak. Failytail hanya bisa membaca dan memberikan ulasan ketika anda sudah menonton film tersebut.
       </div>
     </details>
   </div>

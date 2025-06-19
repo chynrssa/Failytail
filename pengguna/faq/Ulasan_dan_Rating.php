@@ -128,28 +128,43 @@
 </style>
 
 <div class="right-section">
-  <h2>Ulasan & Rating Film</h2>
+  <h2>Ulasan dan Rating</h2>
 
   <div class="faq-box">
     <details class="faq-item">
-      <summary><span class="faq-question">Apa itu Failytail?</span></summary>
+      <summary><span class="faq-question">Bagaimana cara menulis ulasan film?</span></summary>
       <div class="faq-answer">
-        Ini adalah platform berbagi informasi dan ulasan film, tempat Anda bisa membaca sinopsis, memberikan rating, serta membagikan pengalaman menonton Anda kepada pengguna lain.
-      </div>
+                        <p>Untuk menulis ulasan:</p>
+                        <ol>
+                            <li>Cari film yang ingin Anda ulas</li>
+                            <li>Buka halaman detail film</li>
+                            <li>Klik "Tulis Ulasan"</li>
+                            <li>Berikan rating (1-5 bintang)</li>
+                            <li>Tuliskan pengalaman dan kesan Anda setelah menonton</li>
+                            <li>Tandai jika mengandung spoiler</li>
+                            <li>Klik "Kirim Ulasan"</li>
+                        </ol>
+                    </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah ini situs resmi dari studio film?</span></summary>
+      <summary><span class="faq-question">Apa perbedaan rating dan ulasan?</span></summary>
       <div class="faq-answer">
-        Bukan. Website ini adalah platform independen yang dibuat oleh pecinta film untuk sesama penonton film.
-      </div>
+                        <p><strong>Rating</strong> adalah penilaian numerik (biasanya 1-5) yang mewakili keseluruhan penilaian Anda terhadap film. <strong>Ulasan</strong> adalah deskripsi tertulis tentang pengalaman, perasaan, dan pemikiran Anda setelah menonton film. Di Failytail, kami mendorong pengguna untuk menulis ulasan personal daripada sekadar memberi rating.</p>
+                    </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah informasi film di sini selalu diperbarui?</span></summary>
+      <summary><span class="faq-question"> Apa yang terjadi jika ulasan saya dilaporkan?</span></summary>
       <div class="faq-answer">
-        Ya, kami rutin memperbarui database dengan informasi terbaru seperti judul film, poster, sinopsis, genre, pemeran, dan tanggal tayang.
-      </div>
+                        <p>Jika ulasan Anda dilaporkan oleh pengguna lain:</p>
+                        <ul>
+                            <li>Tim kami akan meninjau laporan dalam 1-3 hari kerja</li>
+                            <li>Jika ulasan melanggar pedoman komunitas, kami akan menghapusnya dan memberi notifikasi</li>
+                            <li>Untuk pelanggaran ringan, Anda mungkin mendapat peringatan</li>
+                            <li>Akun bisa dibatasi atau ditangguhkan untuk pelanggaran berulang</li>
+                        </ul>
+                    </div>
     </details>
 
     <details class="faq-item">

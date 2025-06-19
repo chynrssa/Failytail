@@ -132,32 +132,28 @@
 
   <div class="faq-box">
     <details class="faq-item">
-      <summary><span class="faq-question">Apa itu Failytail?</span></summary>
+      <summary><span class="faq-question">Bagaimana cara mendaftar akun?</span></summary>
       <div class="faq-answer">
-        Ini adalah platform berbagi informasi dan ulasan film, tempat Anda bisa membaca sinopsis, memberikan rating, serta membagikan pengalaman menonton Anda kepada pengguna lain.
-      </div>
+                        <p>Untuk mendaftar akun:</p>
+                        <ol>
+                            <li>Klik tombol "Daftar" di pojok kanan bawah</li>
+                            <li>Masukkan username anda</li>
+                            <li>Masukkan email</li>
+                            <li>Masukkan nomor HP</li>
+                            <li>Masukkan alamat lengkap anda</li>
+                            <li>Terakhir masukkan password untuk anda login</li>
+                            <li>Serta ceklis "saya menyetujui syarat dan ketentuan" dan klik daftar sekarang</li>
+                        </ol>
+                    </div>
     </details>
 
     <details class="faq-item">
-      <summary><span class="faq-question">Apakah ini situs resmi dari studio film?</span></summary>
+      <summary><span class="faq-question">Apakah saya bisa mengubah nama pengguna?</span></summary>
       <div class="faq-answer">
-        Bukan. Website ini adalah platform independen yang dibuat oleh pecinta film untuk sesama penonton film.
-      </div>
+                        <p>Ya, Anda dapat mengubah nama pengguna melalui pengaturan akun. Namun, nama pengguna hanya dapat diubah sekali setiap 30 hari untuk menjaga konsistensi profil.</p>
+                    </div>
     </details>
 
-    <details class="faq-item">
-      <summary><span class="faq-question">Apakah informasi film di sini selalu diperbarui?</span></summary>
-      <div class="faq-answer">
-        Ya, kami rutin memperbarui database dengan informasi terbaru seperti judul film, poster, sinopsis, genre, pemeran, dan tanggal tayang.
-      </div>
-    </details>
-
-    <details class="faq-item">
-      <summary><span class="faq-question">Apakah saya bisa mengakses situs ini secara gratis?</span></summary>
-      <div class="faq-answer">
-        Ya. Semua fitur utama seperti membaca ulasan, memberikan rating, dan menulis pengalaman dapat digunakan secara gratis.
-      </div>
-    </details>
   </div>
 
   <h3>Pilih topik sesuai pertanyaan anda</h3>
