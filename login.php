@@ -1,6 +1,18 @@
 <?php
 session_start();
+
+// Redirect kalau sudah login
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    if ($_SESSION['role'] === 'admin') {
+        header("Location: /FAILYTAIL/admin/dashboard-admin.php");
+    } else {
+        header("Location: /FAILYTAIL/index.php");
+    }
+    exit;
+}
+
 require 'database/koneksi.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
