@@ -387,60 +387,10 @@ $result = $stmt->get_result();
                   <h2 class="text-xl font-bold text-gray-800">
                     Ulasan Penonton
                   </h2>
-                  <div class="flex items-center space-x-3">
-                    <button
-                      class="flex items-center text-sm text-gray-600 hover:text-primary"
-                    >
-                      <i class="ri-filter-3-line mr-1"></i>
-                      <span>Filter</span>
-                    </button>
-                    <button
-                      class="flex items-center text-sm text-gray-600 hover:text-primary"
-                    >
-                      <i class="ri-sort-desc-line mr-1"></i>
-                      <span>Terbaru</span>
-                    </button>
-                  </div>
+                  
                 </div>
                 <!-- Write Review -->
-                <div class="bg-gray-50 rounded-xl p-4 mb-6">
-                  <h3 class="text-sm font-semibold text-gray-700 mb-3">
-                    Tulis Ulasan Anda
-                  </h3>
-                  <div class="flex items-center mb-3">
-                    <p class="text-sm text-gray-600 mr-3">Rating:</p>
-                    <div class="star-rating flex text-gray-400">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label for="star5"><i class="ri-star-fill"></i></label>
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label for="star4"><i class="ri-star-fill"></i></label>
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label for="star3"><i class="ri-star-fill"></i></label>
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label for="star2"><i class="ri-star-fill"></i></label>
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label for="star1"><i class="ri-star-fill"></i></label>
-                    </div>
-                  </div>
-                  <textarea
-                    placeholder="Bagikan pendapat Anda tentang film ini..."
-                    class="w-full p-3 border border-gray-200 rounded-lg text-sm mb-3 focus:outline-none focus:border-primary"
-                    rows="3"
-                  ></textarea>
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                      <input type="checkbox" id="spoiler" class="mr-2" />
-                      <label for="spoiler" class="text-sm text-gray-600"
-                        >Mengandung spoiler</label
-                      >
-                    </div>
-                    <button
-                      class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-opacity-90 transition"
-                    >
-                      Kirim Ulasan
-                    </button>
-                  </div>
-                </div>
+                
                 <!-- Review List -->
                 <div class="space-y-5">
                   <!-- Review 1 -->

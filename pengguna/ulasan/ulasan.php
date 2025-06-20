@@ -3,12 +3,18 @@ session_start();
 include '../../view/layout/header.php';
 require '../../database/koneksi.php'; // Sesuaikan path ke koneksi.php
 
-// Menggunakan JOIN ke tabel 'users' dan mengambil kolom 'username'
+// Ambil data pengguna yang sedang login dari session
+// Pastikan di sistem login Anda, Anda menyimpan 'user_id' dan 'role'
+$is_logged_in = isset($_SESSION['user_id']);
+$current_user_id = $is_logged_in ? $_SESSION['user_id'] : 0;
+$current_user_role = $is_logged_in ? $_SESSION['role'] : '';
+
 $sql = "SELECT 
             ulasan.id,
             ulasan.komentar,
             ulasan.rating,
             ulasan.created_at,
+            ulasan.user_id, 
             filmadmin.judul AS nama_film,
             filmadmin.poster,
             users.username AS nama_pengguna 
@@ -50,8 +56,9 @@ function generate_stars($rating) {
         <?php while ($ulasan = $result->fetch_assoc()): ?>
           <?php
             $posterPath = str_replace('../', '../../', $ulasan['poster']);
+            $posterPath = str_replace(' ', '%20', $posterPath);
           ?>
-          <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow p-5 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow p-5 border border-gray-100 flex flex-col">
             <div class="flex items-center mb-4">
               <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
                 <i class="ri-user-line text-gray-500 ri-lg"></i>
@@ -76,9 +83,20 @@ function generate_stars($rating) {
               <span class="text-sm text-gray-500 ml-2">(<?= htmlspecialchars(number_format($ulasan['rating'], 1)) ?>/10.0)</span>
             </div>
             
-            <p class="text-sm text-gray-700 mb-4 line-clamp-4">
+            <p class="text-sm text-gray-700 mb-4 line-clamp-4 flex-grow">
               <?= htmlspecialchars($ulasan['komentar']) ?>
             </p>
+
+            <?php if ($is_logged_in && ($current_user_role === 'admin' || $current_user_id == $ulasan['user_id'])): ?>
+              <div class="mt-auto pt-4 border-t border-gray-100">
+                <a href="hapus-ulasan.php?id=<?= $ulasan['id'] ?>"
+                   onclick="return confirm('Anda yakin ingin menghapus ulasan ini?')"
+                   class="text-red-500 hover:text-red-700 text-sm font-medium flex items-center">
+                  <i class="ri-delete-bin-line mr-1"></i>
+                  Hapus Ulasan
+                </a>
+              </div>
+            <?php endif; ?>
           </div>
         <?php endwhile; ?>
       <?php else: ?>
