@@ -11,7 +11,6 @@ include '../view/layout/header.php';
 <!-- Bungkus seluruh isi dengan div fleksibel -->
 <div class="min-h-screen flex flex-col">
 
-  <!-- Konten utama -->
   <div class="p-6 flex-grow">
     <h1 class="text-2xl font-bold mb-4">Data Pengguna</h1>
     <div class="overflow-x-auto">
@@ -37,7 +36,13 @@ include '../view/layout/header.php';
               echo "<td class='border p-2'>" . $row["id"] . "</td>";
               echo "<td class='border p-2'>" . htmlspecialchars($row["username"]) . "</td>";
               echo "<td class='border p-2'>" . date('Y-m-d', strtotime($row["created_at"])) . "</td>";
-              echo "<td class='border p-2 text-center'>";
+              echo "<td class='border p-2 text-center space-x-2'>";
+              // Tombol Edit
+              echo "<a href='edit-pengguna.php?id=" . $row["id"] . "' 
+                       class='inline-block bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700'>
+                      Edit
+                    </a>";
+              // Tombol Hapus
               echo "<a href='hapus-pengguna.php?id=" . $row["id"] . "' 
                        onclick=\"return confirm('Yakin ingin menghapus pengguna ini?')\"
                        class='inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700'>
@@ -55,6 +60,8 @@ include '../view/layout/header.php';
     </div>
   </div>
 
-  <!-- Footer tetap di bawah -->
-  <?php include '../view/layout/footer.php'; ?>
+  <?php
+    $conn->close();
+    include '../view/layout/footer.php';
+  ?>
 </div>

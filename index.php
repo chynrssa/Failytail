@@ -69,15 +69,12 @@ $result = $stmt->get_result();
             Baca ulasan dari penonton lain dan bagikan pengalamanmu sendiri setelah menonton film.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="/FAILYTAIL/index.php"
-              class="bg-primary text-white px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-opacity-90 transition">
+            <button class="bg-primary text-white px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-opacity-90 transition">
               Jelajahi Film
-            </a>
-
-            <a href="/FAILYTAIL/pengguna/film/detail-film.php"
-              class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-gray-100 transition inline-block">
+            </button>
+            <button class="bg-white text-gray-800 px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-gray-100 transition">
               Tulis Ulasan
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -103,7 +100,7 @@ $result = $stmt->get_result();
       <div class="container mx-auto px-4">
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-2xl font-bold text-gray-800">Kategori Film</h2>
-      <a href="/FAILYTAIL/index.php" class="text-primary font-medium text-sm flex items-center">Lihat Semua<i class="ri-arrow-right-line ml-1"></i></a>
+      <a href="index.php#film-categories" class="text-primary font-medium text-sm flex items-center">Lihat Semua<i class="ri-arrow-right-line ml-1"></i></a>
     </div>
     
     <div class="flex overflow-x-auto whitespace-nowrap mb-6 pb-2">
@@ -390,10 +387,12 @@ $result = $stmt->get_result();
                   <h2 class="text-xl font-bold text-gray-800">
                     Ulasan Penonton
                   </h2>
-                  
+                  <div class="flex items-center space-x-3">
+
+                  </div>
                 </div>
                 <!-- Write Review -->
-                
+               
                 <!-- Review List -->
                 <div class="space-y-5">
                   <!-- Review 1 -->
@@ -568,7 +567,7 @@ $result = $stmt->get_result();
         const starLabels = document.querySelectorAll(".star-rating label");
         starLabels.forEach((label) => {
           label.addEventListener("click", function () {
-            const input = document.querySelector(`#${this.getAttribute("for")}`);
+            const input = document.querySelector(#${this.getAttribute("for")});
             if (input) {
               input.checked = true;
             }
@@ -617,4 +616,3 @@ $result = $stmt->get_result();
     </script>
   </body>
 </html>
-  
