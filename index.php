@@ -1,7 +1,6 @@
 <?php
 include 'view/layout/header.php';
 
-// 1. Koneksi ke database
 $conn = new mysqli("localhost", "root", "", "failytail");
 if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
@@ -23,6 +22,7 @@ $sql = "SELECT
 $where_clauses = [];
 $params = [];
 $types = '';
+
 
 if (!empty($selected_genre) && $selected_genre !== 'Semua') {
     $where_clauses[] = "filmadmin.genre LIKE ?";
@@ -84,7 +84,7 @@ $result = $stmt->get_result();
 
 
     <!-- Film Categories -->
-     <section class="py-8 bg-gray-50">
+    <section class="py-8 bg-gray-50">
        <div class="container mx-auto px-4 mb-6">
       <form action="index.php#film-categories" method="GET" class="relative w-full max-w-[50%] mx-auto">
         <input type="text" name="search" placeholder="Cari film berdasarkan judul..." value="<?= htmlspecialchars($search_query) ?>" class="w-full py-2 px-4 pr-10 text-sm rounded-full border border-gray-300 text-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-primary"/>
@@ -387,7 +387,20 @@ $result = $stmt->get_result();
                   <h2 class="text-xl font-bold text-gray-800">
                     Ulasan Penonton
                   </h2>
-                 
+                  <div class="flex items-center space-x-3">
+                    <button
+                      class="flex items-center text-sm text-gray-600 hover:text-primary"
+                    >
+                      <i class="ri-filter-3-line mr-1"></i>
+                      <span>Filter</span>
+                    </button>
+                    <button
+                      class="flex items-center text-sm text-gray-600 hover:text-primary"
+                    >
+                      <i class="ri-sort-desc-line mr-1"></i>
+                      <span>Terbaru</span>
+                    </button>
+                  </div>
                 </div>
                 <!-- Write Review -->
                 <div class="bg-gray-50 rounded-xl p-4 mb-6">
@@ -416,7 +429,10 @@ $result = $stmt->get_result();
                   ></textarea>
                   <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                      
+                      <input type="checkbox" id="spoiler" class="mr-2" />
+                      <label for="spoiler" class="text-sm text-gray-600"
+                        >Mengandung spoiler</label
+                      >
                     </div>
                     <button
                       class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-opacity-90 transition"
@@ -648,3 +664,4 @@ $result = $stmt->get_result();
     </script>
   </body>
 </html>
+  
