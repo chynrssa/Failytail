@@ -87,16 +87,27 @@ function generate_stars($rating) {
               <?= htmlspecialchars($ulasan['komentar']) ?>
             </p>
 
-            <?php if ($is_logged_in && ($current_user_role === 'admin' || $current_user_id == $ulasan['user_id'])): ?>
-              <div class="mt-auto pt-4 border-t border-gray-100">
+
+            <div class="mt-auto pt-4 border-t border-gray-100 flex items-center space-x-4">
+              <?php // Tombol Edit HANYA untuk pemilik ulasan ?>
+              <?php if ($is_logged_in && $current_user_id == $ulasan['user_id']): ?>
+                <a href="edit-ulasan.php?id=<?= $ulasan['id'] ?>"
+                   class="text-blue-500 hover:text-blue-700 text-sm font-medium flex items-center">
+                  <i class="ri-pencil-line mr-1"></i>
+                  Edit
+                </a>
+              <?php endif; ?>
+
+              <?php // Tombol Hapus untuk pemilik ulasan ATAU admin ?>
+              <?php if ($is_logged_in && ($current_user_role === 'admin' || $current_user_id == $ulasan['user_id'])): ?>
                 <a href="hapus-ulasan.php?id=<?= $ulasan['id'] ?>"
                    onclick="return confirm('Anda yakin ingin menghapus ulasan ini?')"
                    class="text-red-500 hover:text-red-700 text-sm font-medium flex items-center">
                   <i class="ri-delete-bin-line mr-1"></i>
-                  Hapus Ulasan
+                  Hapus
                 </a>
-              </div>
-            <?php endif; ?>
+              <?php endif; ?>
+            </div>
           </div>
         <?php endwhile; ?>
       <?php else: ?>
